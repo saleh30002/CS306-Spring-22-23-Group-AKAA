@@ -1,0 +1,286 @@
+[1, 16:57:41] Apply changes to cs306-project: Applying object changes ...
+[1, 16:57:45] Applying changes to cs306-project...: 
+[1, 16:57:45] : Changes applied to cs306-project
+[1, 16:57:47] Apply changes to cs306-project: Changes applied
+[2, 17:00:02] CREATE TABLE countries (
+    countryName CHAR(50),
+    countryCode CHAR(5),
+    PRIMARY KEY (countryCode)
+): Running...
+[2, 17:00:02] CREATE TABLE countries (
+    countryName CHAR(50),
+    countryCode CHAR(5),
+    PRIMARY KEY (countryCode)
+): Error Code: 1046. No database selected
+Select the default DB to be used by double-clicking its name in the SCHEMAS list in the sidebar.
+[3, 17:00:27] CREATE TABLE countries (
+    countryName CHAR(50),
+    countryCode CHAR(5),
+    PRIMARY KEY (countryCode)
+): Running...
+[3, 17:00:27] CREATE TABLE countries (
+    countryName CHAR(50),
+    countryCode CHAR(5),
+    PRIMARY KEY (countryCode)
+): 0 row(s) affected
+[4, 17:01:19] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[4, 17:01:19] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[5, 17:01:19] SHOW DATABASES: Executing 
+[5, 17:01:19] SHOW DATABASES: OK
+[6, 17:01:27] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[6, 17:01:27] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[7, 17:01:27] SHOW COLUMNS FROM `cs306-project`.`countries`: Executing 
+[7, 17:01:27] SHOW COLUMNS FROM `cs306-project`.`countries`: OK
+[8, 17:01:39] PREPARE stmt FROM 'INSERT INTO `cs306-project`.`countries` (`countryName`,`countryCode`) VALUES(?,?)': Executing 
+[8, 17:01:39] PREPARE stmt FROM 'INSERT INTO `cs306-project`.`countries` (`countryName`,`countryCode`) VALUES(?,?)': OK
+[9, 17:01:41] DEALLOCATE PREPARE stmt: Executing 
+[9, 17:01:41] DEALLOCATE PREPARE stmt: OK
+[10, 17:02:07] SELECT * FROM `cs306-project`.countries
+LIMIT 0, 1000
+: Running...
+[10, 17:02:07] SELECT * FROM `cs306-project`.countries
+LIMIT 0, 1000
+: Fetching...
+[10, 17:02:07] SELECT * FROM `cs306-project`.countries
+LIMIT 0, 1000
+: 182 row(s) returned
+[11, 17:03:56] CREATE TABLE countries (
+    countryName CHAR(100),
+    countryCode CHAR(5),
+    PRIMARY KEY (countryCode)
+): Running...
+[11, 17:03:56] CREATE TABLE countries (
+    countryName CHAR(100),
+    countryCode CHAR(5),
+    PRIMARY KEY (countryCode)
+): Error Code: 1050. Table 'countries' already exists
+[12, 17:04:19] DROP TABLE countries: Running...
+[12, 17:04:19] DROP TABLE countries: 0 row(s) affected
+[13, 17:04:27] CREATE TABLE countries (
+    countryName CHAR(100),
+    countryCode CHAR(5),
+    PRIMARY KEY (countryCode)
+): Running...
+[13, 17:04:27] CREATE TABLE countries (
+    countryName CHAR(100),
+    countryCode CHAR(5),
+    PRIMARY KEY (countryCode)
+): 0 row(s) affected
+[14, 17:04:43] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[14, 17:04:43] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[15, 17:04:43] SHOW DATABASES: Executing 
+[15, 17:04:43] SHOW DATABASES: OK
+[16, 17:04:44] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[16, 17:04:44] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[17, 17:04:44] SHOW COLUMNS FROM `cs306-project`.`countries`: Executing 
+[17, 17:04:44] SHOW COLUMNS FROM `cs306-project`.`countries`: OK
+[18, 17:04:49] PREPARE stmt FROM 'INSERT INTO `cs306-project`.`countries` (`countryName`,`countryCode`) VALUES(?,?)': Executing 
+[18, 17:04:49] PREPARE stmt FROM 'INSERT INTO `cs306-project`.`countries` (`countryName`,`countryCode`) VALUES(?,?)': OK
+[19, 17:04:51] DEALLOCATE PREPARE stmt: Executing 
+[19, 17:04:51] DEALLOCATE PREPARE stmt: OK
+[20, 17:11:10] CREATE TABLE mentalIllnessPerCountry(
+	countryCode CHAR(5),
+    Year INT,
+    DALY DOUBLE,
+    prevalenceEating DOUBLE,
+    prevalenceDepressive DOUBLE,
+    FOREIGN KEY (countryCode)
+    REFERENCES countries(countryCode),
+    PRIMARY KEY (countryCode, Year)
+): Running...
+[20, 17:11:10] CREATE TABLE mentalIllnessPerCountry(
+	countryCode CHAR(5),
+    Year INT,
+    DALY DOUBLE,
+    prevalenceEating DOUBLE,
+    prevalenceDepressive DOUBLE,
+    FOREIGN KEY (countryCode)
+    REFERENCES countries(countryCode),
+    PRIMARY KEY (countryCode, Year)
+): 0 row(s) affected
+[21, 17:12:03] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[21, 17:12:03] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[22, 17:12:03] SHOW DATABASES: Executing 
+[22, 17:12:03] SHOW DATABASES: OK
+[23, 17:12:06] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[23, 17:12:06] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[24, 17:12:06] SHOW COLUMNS FROM `cs306-project`.`mentalillnesspercountry`: Executing 
+[24, 17:12:06] SHOW COLUMNS FROM `cs306-project`.`mentalillnesspercountry`: OK
+[25, 17:12:39] PREPARE stmt FROM 'INSERT INTO `cs306-project`.`mentalillnesspercountry` (`countryCode`,`Year`,`DALY`,`prevalenceEating`,`prevalenceDepressive`) VALUES(?,?,?,?,?)': Executing 
+[25, 17:12:39] PREPARE stmt FROM 'INSERT INTO `cs306-project`.`mentalillnesspercountry` (`countryCode`,`Year`,`DALY`,`prevalenceEating`,`prevalenceDepressive`) VALUES(?,?,?,?,?)': OK
+[26, 17:14:36] DEALLOCATE PREPARE stmt: Executing 
+[26, 17:14:36] DEALLOCATE PREPARE stmt: OK
+[27, 17:15:15] SELECT * FROM `cs306-project`.mentalillnesspercountry
+LIMIT 0, 1000
+: Running...
+[27, 17:15:15] SELECT * FROM `cs306-project`.mentalillnesspercountry
+LIMIT 0, 1000
+: Fetching...
+[27, 17:15:15] SELECT * FROM `cs306-project`.mentalillnesspercountry
+LIMIT 0, 1000
+: 1000 row(s) returned
+[28, 22:51:16] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[28, 22:51:16] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[29, 22:51:16] SHOW DATABASES: Executing 
+[29, 22:51:16] SHOW DATABASES: OK
+[30, 22:51:32] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[30, 22:51:32] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[31, 22:51:32] SHOW COLUMNS FROM `cs306-project`.`mentalillnesspercountry`: Executing 
+[31, 22:51:32] SHOW COLUMNS FROM `cs306-project`.`mentalillnesspercountry`: OK
+[32, 22:51:59] PREPARE stmt FROM 'INSERT INTO `cs306-project`.`mentalillnesspercountry` (`countryCode`,`Year`,`DALY`,`prevalenceEating`,`prevalenceDepressive`) VALUES(?,?,?,?,?)': Executing 
+[32, 22:51:59] PREPARE stmt FROM 'INSERT INTO `cs306-project`.`mentalillnesspercountry` (`countryCode`,`Year`,`DALY`,`prevalenceEating`,`prevalenceDepressive`) VALUES(?,?,?,?,?)': OK
+[33, 22:52:17] DEALLOCATE PREPARE stmt: Executing 
+[33, 22:52:17] DEALLOCATE PREPARE stmt: OK
+[34, 22:53:09] DROP TABLE mentalillnesspercountry: Running...
+[34, 22:53:09] DROP TABLE mentalillnesspercountry: 0 row(s) affected
+[35, 22:53:18] CREATE TABLE mentalIllnessPerCountry(
+	countryCode CHAR(5),
+    Year INT,
+    DALY DOUBLE,
+    prevalenceEating DOUBLE,
+    prevalenceDepressive DOUBLE,
+    FOREIGN KEY (countryCode)
+    REFERENCES countries(countryCode),
+    PRIMARY KEY (countryCode, Year)
+): Running...
+[35, 22:53:18] CREATE TABLE mentalIllnessPerCountry(
+	countryCode CHAR(5),
+    Year INT,
+    DALY DOUBLE,
+    prevalenceEating DOUBLE,
+    prevalenceDepressive DOUBLE,
+    FOREIGN KEY (countryCode)
+    REFERENCES countries(countryCode),
+    PRIMARY KEY (countryCode, Year)
+): 0 row(s) affected
+[36, 22:53:36] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[36, 22:53:36] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[37, 22:53:36] SHOW DATABASES: Executing 
+[37, 22:53:36] SHOW DATABASES: OK
+[38, 22:53:38] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[38, 22:53:38] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[39, 22:53:38] SHOW COLUMNS FROM `cs306-project`.`mentalillnesspercountry`: Executing 
+[39, 22:53:38] SHOW COLUMNS FROM `cs306-project`.`mentalillnesspercountry`: OK
+[40, 22:54:15] PREPARE stmt FROM 'INSERT INTO `cs306-project`.`mentalillnesspercountry` (`countryCode`,`Year`,`DALY`,`prevalenceEating`,`prevalenceDepressive`) VALUES(?,?,?,?,?)': Executing 
+[40, 22:54:15] PREPARE stmt FROM 'INSERT INTO `cs306-project`.`mentalillnesspercountry` (`countryCode`,`Year`,`DALY`,`prevalenceEating`,`prevalenceDepressive`) VALUES(?,?,?,?,?)': OK
+[41, 23:08:37] DEALLOCATE PREPARE stmt: Executing 
+[41, 23:08:37] DEALLOCATE PREPARE stmt: OK
+[42, 23:08:50] SELECT * FROM `cs306-project`.mentalillnesspercountry
+LIMIT 0, 1000
+: Running...
+[42, 23:08:50] SELECT * FROM `cs306-project`.mentalillnesspercountry
+LIMIT 0, 1000
+: Fetching...
+[42, 23:08:50] SELECT * FROM `cs306-project`.mentalillnesspercountry
+LIMIT 0, 1000
+: 1000 row(s) returned
+[43, 23:09:52] CREATE TABLE mentalIllnessPerCountry(
+	countryCode CHAR(5),
+    Year INT,
+    DALY DOUBLE,
+    prevalenceEating DOUBLE,
+    prevalenceDepressive DOUBLE,
+    FOREIGN KEY (countryCode)
+    REFERENCES countries(countryCode),
+    PRIMARY KEY (countryCode, Year)
+): Running...
+[43, 23:09:52] CREATE TABLE mentalIllnessPerCountry(
+	countryCode CHAR(5),
+    Year INT,
+    DALY DOUBLE,
+    prevalenceEating DOUBLE,
+    prevalenceDepressive DOUBLE,
+    FOREIGN KEY (countryCode)
+    REFERENCES countries(countryCode),
+    PRIMARY KEY (countryCode, Year)
+): Error Code: 1050. Table 'mentalillnesspercountry' already exists
+[44, 23:10:04] DROP TABLE mentalillnesspercountry: Running...
+[44, 23:10:04] DROP TABLE mentalillnesspercountry: 0 row(s) affected
+[45, 23:10:11] CREATE TABLE mentalIllnessPerCountry(
+	countryCode CHAR(5),
+    Year INT,
+    DALY DOUBLE,
+    prevalenceEating DOUBLE,
+    prevalenceDepressive DOUBLE,
+    FOREIGN KEY (countryCode)
+    REFERENCES countries(countryCode),
+    PRIMARY KEY (countryCode, Year)
+): Running...
+[45, 23:10:11] CREATE TABLE mentalIllnessPerCountry(
+	countryCode CHAR(5),
+    Year INT,
+    DALY DOUBLE,
+    prevalenceEating DOUBLE,
+    prevalenceDepressive DOUBLE,
+    FOREIGN KEY (countryCode)
+    REFERENCES countries(countryCode),
+    PRIMARY KEY (countryCode, Year)
+): 0 row(s) affected
+[46, 23:10:22] SELECT * FROM `cs306-project`.mentalillnesspercountry
+LIMIT 0, 1000
+: Running...
+[46, 23:10:22] SELECT * FROM `cs306-project`.mentalillnesspercountry
+LIMIT 0, 1000
+: Fetching...
+[46, 23:10:22] SELECT * FROM `cs306-project`.mentalillnesspercountry
+LIMIT 0, 1000
+: 0 row(s) returned
+[47, 23:10:30] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[47, 23:10:30] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[48, 23:10:30] SHOW DATABASES: Executing 
+[48, 23:10:30] SHOW DATABASES: OK
+[49, 23:10:33] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[49, 23:10:33] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[50, 23:10:33] SHOW COLUMNS FROM `cs306-project`.`mentalillnesspercountry`: Executing 
+[50, 23:10:33] SHOW COLUMNS FROM `cs306-project`.`mentalillnesspercountry`: OK
+[51, 23:11:20] PREPARE stmt FROM 'INSERT INTO `cs306-project`.`mentalillnesspercountry` (`countryCode`,`Year`,`prevalenceEating`,`prevalenceEating`,`prevalenceDepressive`) VALUES(?,?,?,?,?)': Executing 
+[51, 23:11:20] PREPARE stmt FROM 'INSERT INTO `cs306-project`.`mentalillnesspercountry` (`countryCode`,`Year`,`prevalenceEating`,`prevalenceEating`,`prevalenceDepressive`) VALUES(?,?,?,?,?)': Error Code: 1110
+Column 'prevalenceEating' specified twice
+[52, 23:11:47] SELECT * FROM `cs306-project`.mentalillnesspercountry
+LIMIT 0, 1000
+: Running...
+[52, 23:11:47] SELECT * FROM `cs306-project`.mentalillnesspercountry
+LIMIT 0, 1000
+: Fetching...
+[52, 23:11:47] SELECT * FROM `cs306-project`.mentalillnesspercountry
+LIMIT 0, 1000
+: 0 row(s) returned
+[53, 23:11:59] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[53, 23:11:59] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[54, 23:11:59] SHOW DATABASES: Executing 
+[54, 23:11:59] SHOW DATABASES: OK
+[55, 23:12:01] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[55, 23:12:01] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[56, 23:12:01] SHOW COLUMNS FROM `cs306-project`.`mentalillnesspercountry`: Executing 
+[56, 23:12:01] SHOW COLUMNS FROM `cs306-project`.`mentalillnesspercountry`: OK
+[57, 23:12:19] PREPARE stmt FROM 'INSERT INTO `cs306-project`.`mentalillnesspercountry` (`countryCode`,`Year`,`DALY`,`prevalenceEating`,`prevalenceDepressive`) VALUES(?,?,?,?,?)': Executing 
+[57, 23:12:19] PREPARE stmt FROM 'INSERT INTO `cs306-project`.`mentalillnesspercountry` (`countryCode`,`Year`,`DALY`,`prevalenceEating`,`prevalenceDepressive`) VALUES(?,?,?,?,?)': OK
+[58, 00:07:55] DEALLOCATE PREPARE stmt: Executing 
+[58, 00:07:55] DEALLOCATE PREPARE stmt: OK
+[59, 00:08:38] SELECT * FROM `cs306-project`.mentalillnesspercountry
+LIMIT 0, 1000
+: Running...
+[59, 00:08:38] SELECT * FROM `cs306-project`.mentalillnesspercountry
+LIMIT 0, 1000
+: Fetching...
+[59, 00:08:38] SELECT * FROM `cs306-project`.mentalillnesspercountry
+LIMIT 0, 1000
+: 1000 row(s) returned
+[1, 10:14:17] SELECT * FROM `cs306-project`.mentalillnesspercountry
+LIMIT 0, 1000
+: Running...
+[1, 10:14:17] SELECT * FROM `cs306-project`.mentalillnesspercountry
+LIMIT 0, 1000
+: Fetching...
+[1, 10:14:17] SELECT * FROM `cs306-project`.mentalillnesspercountry
+LIMIT 0, 1000
+: 1000 row(s) returned
+[2, 10:15:54] SELECT * FROM `cs306-project`.mentalillnesspercountry
+LIMIT 0, 10000
+: Running...
+[2, 10:15:54] SELECT * FROM `cs306-project`.mentalillnesspercountry
+LIMIT 0, 10000
+: Fetching...
+[2, 10:15:54] SELECT * FROM `cs306-project`.mentalillnesspercountry
+LIMIT 0, 10000
+: 5070 row(s) returned

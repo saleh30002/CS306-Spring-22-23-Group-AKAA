@@ -1,0 +1,76 @@
+[37, 17:57:08] CREATE TABLE Countries(
+	countryName CHAR(100),
+    countryCode CHAR(5),
+    PRIMARY KEY (countryCode)
+): Running...
+[37, 17:57:08] CREATE TABLE Countries(
+	countryName CHAR(100),
+    countryCode CHAR(5),
+    PRIMARY KEY (countryCode)
+): 0 row(s) affected
+[38, 17:57:08] CREATE TABLE AirPollution (
+	countryCode CHAR(5),
+    Year INT,
+    totalPollution DOUBLE,
+    meanAnnualExposure DOUBLE,
+    levelsExceedingWHO DOUBLE,
+    PRIMARY KEY (countryCode, Year),
+    FOREIGN KEY (countryCode) REFERENCES Countries(countryCode) ON DELETE CASCADE
+    ): Running...
+[38, 17:57:08] CREATE TABLE AirPollution (
+	countryCode CHAR(5),
+    Year INT,
+    totalPollution DOUBLE,
+    meanAnnualExposure DOUBLE,
+    levelsExceedingWHO DOUBLE,
+    PRIMARY KEY (countryCode, Year),
+    FOREIGN KEY (countryCode) REFERENCES Countries(countryCode) ON DELETE CASCADE
+    ): 0 row(s) affected
+[1, 17:58:02] SELECT * FROM `cs306-project`.countries: Running...
+[1, 17:58:02] SELECT * FROM `cs306-project`.countries: Fetching...
+[1, 17:58:02] SELECT * FROM `cs306-project`.countries: 0 row(s) returned
+[2, 17:58:25] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[2, 17:58:25] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[3, 17:58:25] SHOW DATABASES: Executing 
+[3, 17:58:25] SHOW DATABASES: OK
+[4, 17:58:52] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[4, 17:58:52] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[5, 17:58:52] SHOW COLUMNS FROM `cs306-project`.`countries`: Executing 
+[5, 17:58:52] SHOW COLUMNS FROM `cs306-project`.`countries`: OK
+[6, 17:59:06] PREPARE stmt FROM 'INSERT INTO `cs306-project`.`countries` (`countryName`,`countryCode`) VALUES(?,?)': Executing 
+[6, 17:59:06] PREPARE stmt FROM 'INSERT INTO `cs306-project`.`countries` (`countryName`,`countryCode`) VALUES(?,?)': OK
+[7, 17:59:07] DEALLOCATE PREPARE stmt: Executing 
+[7, 17:59:07] DEALLOCATE PREPARE stmt: OK
+[8, 17:59:13] SELECT * FROM `cs306-project`.countries: Running...
+[8, 17:59:13] SELECT * FROM `cs306-project`.countries: Fetching...
+[8, 17:59:13] SELECT * FROM `cs306-project`.countries: 249 row(s) returned
+[9, 18:01:20] SELECT * FROM `cs306-project`.airpollution: Running...
+[9, 18:01:20] SELECT * FROM `cs306-project`.airpollution: Fetching...
+[9, 18:01:20] SELECT * FROM `cs306-project`.airpollution: 0 row(s) returned
+[10, 18:01:27] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[10, 18:01:27] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[11, 18:01:27] SHOW DATABASES: Executing 
+[11, 18:01:27] SHOW DATABASES: OK
+[12, 18:01:30] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[12, 18:01:30] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[13, 18:01:30] SHOW COLUMNS FROM `cs306-project`.`airpollution`: Executing 
+[13, 18:01:30] SHOW COLUMNS FROM `cs306-project`.`airpollution`: OK
+[14, 18:01:55] PREPARE stmt FROM 'INSERT INTO `cs306-project`.`airpollution` (`countryCode`,`Year`,`meanAnnualExposure`,`totalPollution`,`levelsExceedingWHO`) VALUES(?,?,?,?,?)': Executing 
+[14, 18:01:55] PREPARE stmt FROM 'INSERT INTO `cs306-project`.`airpollution` (`countryCode`,`Year`,`meanAnnualExposure`,`totalPollution`,`levelsExceedingWHO`) VALUES(?,?,?,?,?)': OK
+[15, 18:02:04] DEALLOCATE PREPARE stmt: Executing 
+[15, 18:02:04] DEALLOCATE PREPARE stmt: OK
+[16, 18:02:40] SELECT * FROM `cs306-project`.airpollution: Running...
+[16, 18:02:40] SELECT * FROM `cs306-project`.airpollution: Fetching...
+[16, 18:02:40] SELECT * FROM `cs306-project`.airpollution: 2232 row(s) returned
+[17, 18:05:23] ALTER TABLE airpollution CHANGE totalPollution `Total including LUCF in tonnes` DOUBLE: Running...
+[17, 18:05:23] ALTER TABLE airpollution CHANGE totalPollution `Total including LUCF in tonnes` DOUBLE: 0 row(s) affected
+Records: 0  Duplicates: 0  Warnings: 0
+[18, 18:05:23] ALTER TABLE airpollution CHANGE meanAnnualExposure `PM2.5, mean annual exposure (μg/m³)` DOUBLE: Running...
+[18, 18:05:23] ALTER TABLE airpollution CHANGE meanAnnualExposure `PM2.5, mean annual exposure (μg/m³)` DOUBLE: 0 row(s) affected
+Records: 0  Duplicates: 0  Warnings: 0
+[19, 18:05:23] ALTER TABLE airpollution CHANGE levelsExceedingWHO `PM2.5, pop. exposed to levels > WHO guideline value (% TOT)` DOUBLE: Running...
+[19, 18:05:23] ALTER TABLE airpollution CHANGE levelsExceedingWHO `PM2.5, pop. exposed to levels > WHO guideline value (% TOT)` DOUBLE: 0 row(s) affected
+Records: 0  Duplicates: 0  Warnings: 0
+[20, 18:05:26] SELECT * FROM `cs306-project`.airpollution: Running...
+[20, 18:05:26] SELECT * FROM `cs306-project`.airpollution: Fetching...
+[20, 18:05:26] SELECT * FROM `cs306-project`.airpollution: 2232 row(s) returned

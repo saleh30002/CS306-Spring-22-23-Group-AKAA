@@ -1,0 +1,78 @@
+[4, 21:09:38] Apply changes to cs306-project-AKAA: Applying object changes ...
+[4, 21:09:46] Applying changes to cs306-project-akaa...: 
+[4, 21:09:46] : Changes applied to cs306-project-akaa
+[4, 21:09:48] Apply changes to cs306-project-AKAA: Changes applied
+[5, 21:09:54] USE `cs306-project-AKAA`: Running...
+[5, 21:09:54] USE `cs306-project-AKAA`: 0 row(s) affected
+[6, 21:09:54] CREATE TABLE countries (
+    countryName CHAR(100),
+    countryCode CHAR(5),
+    PRIMARY KEY (countryCode)
+): Running...
+[6, 21:09:54] CREATE TABLE countries (
+    countryName CHAR(100),
+    countryCode CHAR(5),
+    PRIMARY KEY (countryCode)
+): 0 row(s) affected
+[7, 21:09:54] CREATE TABLE mentalIllnessPerCountry(
+	countryCode CHAR(5),
+    Year INT,
+    DALY DOUBLE,
+    prevalenceEating DOUBLE,
+    prevalenceDepressive DOUBLE,
+    FOREIGN KEY (countryCode)
+    REFERENCES countries(countryCode) ON DELETE CASCADE,
+    PRIMARY KEY (countryCode, Year)
+): Running...
+[7, 21:09:54] CREATE TABLE mentalIllnessPerCountry(
+	countryCode CHAR(5),
+    Year INT,
+    DALY DOUBLE,
+    prevalenceEating DOUBLE,
+    prevalenceDepressive DOUBLE,
+    FOREIGN KEY (countryCode)
+    REFERENCES countries(countryCode) ON DELETE CASCADE,
+    PRIMARY KEY (countryCode, Year)
+): 0 row(s) affected
+[8, 21:11:19] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[8, 21:11:19] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[9, 21:11:19] SHOW DATABASES: Executing 
+[9, 21:11:19] SHOW DATABASES: OK
+[10, 21:11:23] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[10, 21:11:23] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[11, 21:11:23] SHOW COLUMNS FROM `cs306-project-akaa`.`countries`: Executing 
+[11, 21:11:23] SHOW COLUMNS FROM `cs306-project-akaa`.`countries`: OK
+[12, 21:11:30] PREPARE stmt FROM 'INSERT INTO `cs306-project-akaa`.`countries` (`countryName`,`countryCode`) VALUES(?,?)': Executing 
+[12, 21:11:30] PREPARE stmt FROM 'INSERT INTO `cs306-project-akaa`.`countries` (`countryName`,`countryCode`) VALUES(?,?)': OK
+[13, 21:11:33] DEALLOCATE PREPARE stmt: Executing 
+[13, 21:11:33] DEALLOCATE PREPARE stmt: OK
+[14, 21:11:44] SELECT * FROM `cs306-project-akaa`.countries
+LIMIT 0, 10000
+: Running...
+[14, 21:11:44] SELECT * FROM `cs306-project-akaa`.countries
+LIMIT 0, 10000
+: Fetching...
+[14, 21:11:44] SELECT * FROM `cs306-project-akaa`.countries
+LIMIT 0, 10000
+: 249 row(s) returned
+[15, 21:12:01] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[15, 21:12:01] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[16, 21:12:01] SHOW DATABASES: Executing 
+[16, 21:12:01] SHOW DATABASES: OK
+[17, 21:12:03] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[17, 21:12:03] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[18, 21:12:03] SHOW COLUMNS FROM `cs306-project-akaa`.`mentalillnesspercountry`: Executing 
+[18, 21:12:03] SHOW COLUMNS FROM `cs306-project-akaa`.`mentalillnesspercountry`: OK
+[19, 21:12:45] PREPARE stmt FROM 'INSERT INTO `cs306-project-akaa`.`mentalillnesspercountry` (`countryCode`,`Year`,`DALY`,`prevalenceEating`,`prevalenceDepressive`) VALUES(?,?,?,?,?)': Executing 
+[19, 21:12:45] PREPARE stmt FROM 'INSERT INTO `cs306-project-akaa`.`mentalillnesspercountry` (`countryCode`,`Year`,`DALY`,`prevalenceEating`,`prevalenceDepressive`) VALUES(?,?,?,?,?)': OK
+[20, 21:14:28] DEALLOCATE PREPARE stmt: Executing 
+[20, 21:14:28] DEALLOCATE PREPARE stmt: OK
+[21, 21:17:52] SELECT * FROM `cs306-project-akaa`.mentalillnesspercountry
+LIMIT 0, 10000
+: Running...
+[21, 21:17:52] SELECT * FROM `cs306-project-akaa`.mentalillnesspercountry
+LIMIT 0, 10000
+: Fetching...
+[21, 21:17:52] SELECT * FROM `cs306-project-akaa`.mentalillnesspercountry
+LIMIT 0, 10000
+: 6120 row(s) returned

@@ -1,0 +1,62 @@
+[1, 03:56:35] CREATE TABLE countries (
+    countryName CHAR(100),
+    countryCode CHAR(5),
+    PRIMARY KEY (countryCode)
+): Running...
+[1, 03:56:35] CREATE TABLE countries (
+    countryName CHAR(100),
+    countryCode CHAR(5),
+    PRIMARY KEY (countryCode)
+): 0 row(s) affected
+[2, 03:56:35] CREATE TABLE foodManagementPerCountry (
+    countryCode CHAR(5),
+    typeOfFood CHAR(150),
+    year INT,
+    domestic_supply_quantity_1000_tonnes DOUBLE,
+    production_1000_tonnes DOUBLE,
+    FOREIGN KEY (countryCode)
+        REFERENCES countries (countryCode)
+        ON DELETE CASCADE,
+    PRIMARY KEY (countryCode, typeOfFood, year)
+): Running...
+[2, 03:56:35] CREATE TABLE foodManagementPerCountry (
+    countryCode CHAR(5),
+    typeOfFood CHAR(150),
+    year INT,
+    domestic_supply_quantity_1000_tonnes DOUBLE,
+    production_1000_tonnes DOUBLE,
+    FOREIGN KEY (countryCode)
+        REFERENCES countries (countryCode)
+        ON DELETE CASCADE,
+    PRIMARY KEY (countryCode, typeOfFood, year)
+): 0 row(s) affected
+[3, 03:56:52] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[3, 03:56:52] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[4, 03:56:52] SHOW DATABASES: Executing 
+[4, 03:56:52] SHOW DATABASES: OK
+[5, 03:56:54] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[5, 03:56:54] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[6, 03:56:54] SHOW COLUMNS FROM `cs306project`.`countries`: Executing 
+[6, 03:56:54] SHOW COLUMNS FROM `cs306project`.`countries`: OK
+[7, 03:57:00] PREPARE stmt FROM 'INSERT INTO `cs306project`.`countries` (`countryName`,`countryCode`) VALUES(?,?)': Executing 
+[7, 03:57:00] PREPARE stmt FROM 'INSERT INTO `cs306project`.`countries` (`countryName`,`countryCode`) VALUES(?,?)': OK
+[8, 03:57:00] DEALLOCATE PREPARE stmt: Executing 
+[8, 03:57:00] DEALLOCATE PREPARE stmt: OK
+[9, 03:57:07] SELECT * FROM cs306project.countries: Running...
+[9, 03:57:07] SELECT * FROM cs306project.countries: Fetching...
+[9, 03:57:07] SELECT * FROM cs306project.countries: 249 row(s) returned
+[10, 03:57:23] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[10, 03:57:23] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[11, 03:57:23] SHOW DATABASES: Executing 
+[11, 03:57:23] SHOW DATABASES: OK
+[12, 03:57:26] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[12, 03:57:26] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[13, 03:57:26] SHOW COLUMNS FROM `cs306project`.`foodmanagementpercountry`: Executing 
+[13, 03:57:26] SHOW COLUMNS FROM `cs306project`.`foodmanagementpercountry`: OK
+[14, 03:57:39] PREPARE stmt FROM 'INSERT INTO `cs306project`.`foodmanagementpercountry` (`countryCode`,`typeOfFood`,`year`,`domestic_supply_quantity_1000_tonnes`,`production_1000_tonnes`) VALUES(?,?,?,?,?)': Executing 
+[14, 03:57:39] PREPARE stmt FROM 'INSERT INTO `cs306project`.`foodmanagementpercountry` (`countryCode`,`typeOfFood`,`year`,`domestic_supply_quantity_1000_tonnes`,`production_1000_tonnes`) VALUES(?,?,?,?,?)': OK
+[15, 04:13:13] DEALLOCATE PREPARE stmt: Executing 
+[15, 04:13:13] DEALLOCATE PREPARE stmt: OK
+[16, 04:15:00] SELECT * FROM cs306project.foodmanagementpercountry: Running...
+[16, 04:15:00] SELECT * FROM cs306project.foodmanagementpercountry: Fetching...
+[16, 04:15:01] SELECT * FROM cs306project.foodmanagementpercountry: 87696 row(s) returned

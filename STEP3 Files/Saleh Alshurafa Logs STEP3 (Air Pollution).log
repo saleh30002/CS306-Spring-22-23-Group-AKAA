@@ -1,0 +1,109 @@
+[2, 18:26:20] CREATE VIEW population_exposed AS
+SELECT countryCode, Year, `PM2.5, pop. exposed to levels > WHO guideline value (% TOT)`
+FROM `cs306-project`.airpollution
+WHERE `PM2.5, pop. exposed to levels > WHO guideline value (% TOT)` >= 50: Running...
+[2, 18:26:20] CREATE VIEW population_exposed AS
+SELECT countryCode, Year, `PM2.5, pop. exposed to levels > WHO guideline value (% TOT)`
+FROM `cs306-project`.airpollution
+WHERE `PM2.5, pop. exposed to levels > WHO guideline value (% TOT)` >= 50: 0 row(s) affected
+[3, 18:26:31] CREATE VIEW pollution_production AS
+SELECT countryCode, Year, `Total including LUCF in tonnes`
+FROM `cs306-project`.airpollution
+WHERE `Total including LUCF in tonnes` >= 50000000: Running...
+[3, 18:26:31] CREATE VIEW pollution_production AS
+SELECT countryCode, Year, `Total including LUCF in tonnes`
+FROM `cs306-project`.airpollution
+WHERE `Total including LUCF in tonnes` >= 50000000: 0 row(s) affected
+[8, 18:29:15] SELECT E.countryCode, E.`PM2.5, pop. exposed to levels > WHO guideline value (% TOT)`, E.Year
+FROM population_exposed E
+WHERE E.countryCode NOT IN (
+	SELECT 	E.countryCode
+	FROM population_exposed E, pollution_production P
+	WHERE E.countryCode = P.countryCode): Running...
+[8, 18:29:15] SELECT E.countryCode, E.`PM2.5, pop. exposed to levels > WHO guideline value (% TOT)`, E.Year
+FROM population_exposed E
+WHERE E.countryCode NOT IN (
+	SELECT 	E.countryCode
+	FROM population_exposed E, pollution_production P
+	WHERE E.countryCode = P.countryCode): Fetching...
+[8, 18:29:15] SELECT E.countryCode, E.`PM2.5, pop. exposed to levels > WHO guideline value (% TOT)`, E.Year
+FROM population_exposed E
+WHERE E.countryCode NOT IN (
+	SELECT 	E.countryCode
+	FROM population_exposed E, pollution_production P
+	WHERE E.countryCode = P.countryCode): 1013 row(s) returned
+[9, 18:30:16] SELECT E.countryCode, E.`PM2.5, pop. exposed to levels > WHO guideline value (% TOT)`, E.Year
+FROM population_exposed E LEFT OUTER JOIN pollution_production P
+ON E.countryCode = P.countryCode
+WHERE P.countryCode IS NULL: Running...
+[9, 18:30:16] SELECT E.countryCode, E.`PM2.5, pop. exposed to levels > WHO guideline value (% TOT)`, E.Year
+FROM population_exposed E LEFT OUTER JOIN pollution_production P
+ON E.countryCode = P.countryCode
+WHERE P.countryCode IS NULL: Fetching...
+[9, 18:30:16] SELECT E.countryCode, E.`PM2.5, pop. exposed to levels > WHO guideline value (% TOT)`, E.Year
+FROM population_exposed E LEFT OUTER JOIN pollution_production P
+ON E.countryCode = P.countryCode
+WHERE P.countryCode IS NULL: 1013 row(s) returned
+[10, 18:31:01] SELECT E.countryCode, E.`PM2.5, pop. exposed to levels > WHO guideline value (% TOT)`, E.Year
+FROM population_exposed E
+WHERE E.countryCode IN (
+							SELECT P.countryCode
+                            FROM pollution_production P
+                            WHERE E.countryCode = P.countryCode): Running...
+[10, 18:31:01] SELECT E.countryCode, E.`PM2.5, pop. exposed to levels > WHO guideline value (% TOT)`, E.Year
+FROM population_exposed E
+WHERE E.countryCode IN (
+							SELECT P.countryCode
+                            FROM pollution_production P
+                            WHERE E.countryCode = P.countryCode): Fetching...
+[10, 18:31:01] SELECT E.countryCode, E.`PM2.5, pop. exposed to levels > WHO guideline value (% TOT)`, E.Year
+FROM population_exposed E
+WHERE E.countryCode IN (
+							SELECT P.countryCode
+                            FROM pollution_production P
+                            WHERE E.countryCode = P.countryCode): 1082 row(s) returned
+[11, 18:31:40] SELECT E.countryCode,  E.`PM2.5, pop. exposed to levels > WHO guideline value (% TOT)`, E.Year
+FROM population_exposed E
+WHERE EXISTS (
+				SELECT P.countryCode
+				FROM pollution_production P
+				WHERE E.countryCode = P.countryCode): Running...
+[11, 18:31:40] SELECT E.countryCode,  E.`PM2.5, pop. exposed to levels > WHO guideline value (% TOT)`, E.Year
+FROM population_exposed E
+WHERE EXISTS (
+				SELECT P.countryCode
+				FROM pollution_production P
+				WHERE E.countryCode = P.countryCode): Fetching...
+[11, 18:31:40] SELECT E.countryCode,  E.`PM2.5, pop. exposed to levels > WHO guideline value (% TOT)`, E.Year
+FROM population_exposed E
+WHERE EXISTS (
+				SELECT P.countryCode
+				FROM pollution_production P
+				WHERE E.countryCode = P.countryCode): 1082 row(s) returned
+[13, 18:32:49] SELECT P.countryCode,
+	AVG(P.`Total including LUCF in tonnes`) AS `Average Pollution Production Over 1990-2017`,
+	AVG(E.`PM2.5, pop. exposed to levels > WHO guideline value (% TOT)`) AS `Average Percentage of Population In Danger over 1990-2017`
+FROM pollution_production P, population_exposed E
+WHERE P.countryCode = E.countryCode #without this I get wrong results for the 3rd column
+GROUP BY P.countryCode
+HAVING 90 < (SELECT AVG(E.`PM2.5, pop. exposed to levels > WHO guideline value (% TOT)`)
+			 FROM population_exposed E
+			 WHERE E.countryCode = P.countryCode): Running...
+[13, 18:32:49] SELECT P.countryCode,
+	AVG(P.`Total including LUCF in tonnes`) AS `Average Pollution Production Over 1990-2017`,
+	AVG(E.`PM2.5, pop. exposed to levels > WHO guideline value (% TOT)`) AS `Average Percentage of Population In Danger over 1990-2017`
+FROM pollution_production P, population_exposed E
+WHERE P.countryCode = E.countryCode #without this I get wrong results for the 3rd column
+GROUP BY P.countryCode
+HAVING 90 < (SELECT AVG(E.`PM2.5, pop. exposed to levels > WHO guideline value (% TOT)`)
+			 FROM population_exposed E
+			 WHERE E.countryCode = P.countryCode): Fetching...
+[13, 18:32:49] SELECT P.countryCode,
+	AVG(P.`Total including LUCF in tonnes`) AS `Average Pollution Production Over 1990-2017`,
+	AVG(E.`PM2.5, pop. exposed to levels > WHO guideline value (% TOT)`) AS `Average Percentage of Population In Danger over 1990-2017`
+FROM pollution_production P, population_exposed E
+WHERE P.countryCode = E.countryCode #without this I get wrong results for the 3rd column
+GROUP BY P.countryCode
+HAVING 90 < (SELECT AVG(E.`PM2.5, pop. exposed to levels > WHO guideline value (% TOT)`)
+			 FROM population_exposed E
+			 WHERE E.countryCode = P.countryCode): 85 row(s) returned

@@ -1,0 +1,865 @@
+[1, 16:44:08] show databases: Running...
+[1, 16:44:08] show databases: Fetching...
+[1, 16:44:08] show databases: 4 row(s) returned
+[2, 16:49:20] CREATE TABLE substanceAbuse 
+(AlcoholUseDisorder DOUBLE,
+DrugUseDisorder DOUBLE,
+Year INTEGER): Running...
+[2, 16:49:20] CREATE TABLE substanceAbuse 
+(AlcoholUseDisorder DOUBLE,
+DrugUseDisorder DOUBLE,
+Year INTEGER): Error Code: 1046. No database selected
+Select the default DB to be used by double-clicking its name in the SCHEMAS list in the sidebar.
+[3, 16:55:30] CREATE TABLE substanceAbuse 
+(AlcoholUseDisorder DOUBLE,
+DrugUseDisorder DOUBLE,
+Year INTEGER): Running...
+[3, 16:55:30] CREATE TABLE substanceAbuse 
+(AlcoholUseDisorder DOUBLE,
+DrugUseDisorder DOUBLE,
+Year INTEGER): Error Code: 1046. No database selected
+Select the default DB to be used by double-clicking its name in the SCHEMAS list in the sidebar.
+[4, 16:57:46] CREATE TABLE substanceAbuse 
+(countryCode CHAR(5),
+AlcoholUseDisorder DOUBLE,
+DrugUseDisorder DOUBLE,
+Year INTEGER,
+FOREIGN KEY (countryCode)
+REFERENCES countries(countryCode),
+PRIMARY KEY(countryCode, Year)
+): Running...
+[4, 16:57:46] CREATE TABLE substanceAbuse 
+(countryCode CHAR(5),
+AlcoholUseDisorder DOUBLE,
+DrugUseDisorder DOUBLE,
+Year INTEGER,
+FOREIGN KEY (countryCode)
+REFERENCES countries(countryCode),
+PRIMARY KEY(countryCode, Year)
+): Error Code: 1046. No database selected
+Select the default DB to be used by double-clicking its name in the SCHEMAS list in the sidebar.
+[1, 23:15:09] Apply changes to substance_abuse: Applying object changes ...
+[1, 23:15:18] Applying changes to substance_abuse...: 
+[1, 23:15:18] : Changes applied to substance_abuse
+[1, 23:15:20] Apply changes to substance_abuse: Changes applied
+[2, 23:18:15] CREATE TABLE substanceAbusePerCountry(
+	countryCode CHAR(5),
+    Year INT,
+    prevalenceAlcoholUseDisorders_Percent DOUBLE,
+    prevalenceDrugUseDisorders_Percent DOUBLE,
+    FOREIGN KEY (countryCode)
+    REFERENCES countries(countryCode),
+    PRIMARY KEY (countryCode, Year)
+): Running...
+[2, 23:18:15] CREATE TABLE substanceAbusePerCountry(
+	countryCode CHAR(5),
+    Year INT,
+    prevalenceAlcoholUseDisorders_Percent DOUBLE,
+    prevalenceDrugUseDisorders_Percent DOUBLE,
+    FOREIGN KEY (countryCode)
+    REFERENCES countries(countryCode),
+    PRIMARY KEY (countryCode, Year)
+): Error Code: 1824. Failed to open the referenced table 'countries'
+[3, 01:18:57] CREATE TABLE countries(
+
+countryCode CHAR(5),
+countryName CHAR(100)
+
+): Running...
+[3, 01:18:59] CREATE TABLE countries(
+
+countryCode CHAR(5),
+countryName CHAR(100)
+
+): 0 row(s) affected
+[4, 01:18:59] CREATE TABLE substanceAbusePerCountry(
+	countryCode CHAR(5),
+    Year INT,
+    prevalenceAlcoholUseDisorders_Percent DOUBLE,
+    prevalenceDrugUseDisorders_Percent DOUBLE,
+    FOREIGN KEY (countryCode)
+    REFERENCES countries(countryCode),
+    PRIMARY KEY (countryCode, Year)
+): Running...
+[4, 01:18:59] CREATE TABLE substanceAbusePerCountry(
+	countryCode CHAR(5),
+    Year INT,
+    prevalenceAlcoholUseDisorders_Percent DOUBLE,
+    prevalenceDrugUseDisorders_Percent DOUBLE,
+    FOREIGN KEY (countryCode)
+    REFERENCES countries(countryCode),
+    PRIMARY KEY (countryCode, Year)
+): Error Code: 1822. Failed to add the foreign key constraint. Missing index for constraint 'substanceabusepercountry_ibfk_1' in the referenced table 'countries'
+[5, 01:21:10] CREATE TABLE countries(
+
+countryCode CHAR(5),
+countryName CHAR(100)
+
+): Running...
+[5, 01:21:10] CREATE TABLE countries(
+
+countryCode CHAR(5),
+countryName CHAR(100)
+
+): Error Code: 1050. Table 'countries' already exists
+[6, 01:22:40] CREATE TABLE countries(
+
+countryCode CHAR(5),
+countryName CHAR(100)
+
+): Running...
+[6, 01:22:40] CREATE TABLE countries(
+
+countryCode CHAR(5),
+countryName CHAR(100)
+
+): Error Code: 1050. Table 'countries' already exists
+[7, 01:23:10] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[7, 01:23:10] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[8, 01:23:10] SHOW DATABASES: Executing 
+[8, 01:23:10] SHOW DATABASES: OK
+[9, 01:23:19] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[9, 01:23:19] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[10, 01:23:19] SHOW COLUMNS FROM `substance_abuse`.`countries`: Executing 
+[10, 01:23:19] SHOW COLUMNS FROM `substance_abuse`.`countries`: OK
+[11, 01:23:39] PREPARE stmt FROM 'INSERT INTO `substance_abuse`.`countries` (`countryName`,`countryCode`) VALUES(?,?)': Executing 
+[11, 01:23:39] PREPARE stmt FROM 'INSERT INTO `substance_abuse`.`countries` (`countryName`,`countryCode`) VALUES(?,?)': OK
+[12, 01:23:40] DEALLOCATE PREPARE stmt: Executing 
+[12, 01:23:40] DEALLOCATE PREPARE stmt: OK
+[13, 01:27:40] SELECT * FROM substance_abuse.countries
+LIMIT 0, 1000
+: Running...
+[13, 01:27:40] SELECT * FROM substance_abuse.countries
+LIMIT 0, 1000
+: Fetching...
+[13, 01:27:40] SELECT * FROM substance_abuse.countries
+LIMIT 0, 1000
+: 183 row(s) returned
+[14, 01:28:20] SELECT * FROM substance_abuse.countries
+LIMIT 0, 1000
+: Running...
+[14, 01:28:20] SELECT * FROM substance_abuse.countries
+LIMIT 0, 1000
+: Fetching...
+[14, 01:28:20] SELECT * FROM substance_abuse.countries
+LIMIT 0, 1000
+: 183 row(s) returned
+[15, 01:28:53] CREATE TABLE countries(
+
+countryCode CHAR(5),
+countryName CHAR(100)
+
+): Running...
+[15, 01:28:53] CREATE TABLE countries(
+
+countryCode CHAR(5),
+countryName CHAR(100)
+
+): Error Code: 1050. Table 'countries' already exists
+[16, 01:28:59] SELECT * FROM substance_abuse.countries: Running...
+[16, 01:28:59] SELECT * FROM substance_abuse.countries: Fetching...
+[16, 01:28:59] SELECT * FROM substance_abuse.countries: 183 row(s) returned
+[17, 01:29:45] SELECT * FROM substance_abuse.countries: Running...
+[17, 01:29:45] SELECT * FROM substance_abuse.countries: Fetching...
+[17, 01:29:45] SELECT * FROM substance_abuse.countries: 183 row(s) returned
+[18, 01:32:59] CREATE TABLE substanceAbusePerCountry(
+	countryCode CHAR(5),
+    Year INT,
+    prevalenceAlcoholUseDisorder_Percent DOUBLE,
+    prevalenceDrugUseDisorder_Percent DOUBLE,
+    FOREIGN KEY (countryCode)
+    REFERENCES countries(countryCode),
+    PRIMARY KEY (countryCode, Year)
+): Running...
+[18, 01:32:59] CREATE TABLE substanceAbusePerCountry(
+	countryCode CHAR(5),
+    Year INT,
+    prevalenceAlcoholUseDisorder_Percent DOUBLE,
+    prevalenceDrugUseDisorder_Percent DOUBLE,
+    FOREIGN KEY (countryCode)
+    REFERENCES countries(countryCode),
+    PRIMARY KEY (countryCode, Year)
+): Error Code: 1822. Failed to add the foreign key constraint. Missing index for constraint 'substanceabusepercountry_ibfk_1' in the referenced table 'countries'
+[19, 01:35:00] SELECT * FROM substance_abuse.countries: Running...
+[19, 01:35:00] SELECT * FROM substance_abuse.countries: Fetching...
+[19, 01:35:00] SELECT * FROM substance_abuse.countries: 183 row(s) returned
+[20, 01:38:29] SELECT * FROM substance_abuse.countries: Running...
+[20, 01:38:29] SELECT * FROM substance_abuse.countries: Fetching...
+[20, 01:38:29] SELECT * FROM substance_abuse.countries: 183 row(s) returned
+[21, 01:39:12] SELECT * FROM substance_abuse.countries: Running...
+[21, 01:39:12] SELECT * FROM substance_abuse.countries: Fetching...
+[21, 01:39:12] SELECT * FROM substance_abuse.countries: 183 row(s) returned
+[22, 01:45:35] DROP TABLE `substance_abuse`.`countries`: Running...
+[22, 01:45:35] DROP TABLE `substance_abuse`.`countries`: 0 row(s) affected
+[23, 01:45:51] CREATE TABLE countries(
+countryCode CHAR(5),
+countryName CHAR(100)
+PRIMARY KEY (countryCode)
+): Running...
+[23, 01:45:51] CREATE TABLE countries(
+countryCode CHAR(5),
+countryName CHAR(100)
+PRIMARY KEY (countryCode)
+): Error Code: 1064. You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(countryCode)
+)' at line 4
+[24, 01:47:30] CREATE TABLE countries(
+countryCode CHAR(5),
+countryName CHAR(100),
+PRIMARY KEY (countryCode)
+): Running...
+[24, 01:47:30] CREATE TABLE countries(
+countryCode CHAR(5),
+countryName CHAR(100),
+PRIMARY KEY (countryCode)
+): 0 row(s) affected
+[25, 01:47:43] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[25, 01:47:43] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[26, 01:47:43] SHOW DATABASES: Executing 
+[26, 01:47:43] SHOW DATABASES: OK
+[27, 01:47:48] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[27, 01:47:48] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[28, 01:47:48] SHOW COLUMNS FROM `substance_abuse`.`countries`: Executing 
+[28, 01:47:48] SHOW COLUMNS FROM `substance_abuse`.`countries`: OK
+[29, 01:47:53] PREPARE stmt FROM 'INSERT INTO `substance_abuse`.`countries` (`countryName`,`countryCode`) VALUES(?,?)': Executing 
+[29, 01:47:53] PREPARE stmt FROM 'INSERT INTO `substance_abuse`.`countries` (`countryName`,`countryCode`) VALUES(?,?)': OK
+[30, 01:47:54] DEALLOCATE PREPARE stmt: Executing 
+[30, 01:47:54] DEALLOCATE PREPARE stmt: OK
+[31, 01:48:04] CREATE TABLE substanceAbusePerCountry(
+	countryCode CHAR(5),
+    Year INTEGER,
+    prevalenceAlcoholUseDisorder_Percent DOUBLE,
+    prevalenceDrugUseDisorder_Percent DOUBLE,
+    FOREIGN KEY (countryCode) REFERENCES countries(countryCode),
+    PRIMARY KEY (countryCode, Year)
+): Running...
+[31, 01:48:05] CREATE TABLE substanceAbusePerCountry(
+	countryCode CHAR(5),
+    Year INTEGER,
+    prevalenceAlcoholUseDisorder_Percent DOUBLE,
+    prevalenceDrugUseDisorder_Percent DOUBLE,
+    FOREIGN KEY (countryCode) REFERENCES countries(countryCode),
+    PRIMARY KEY (countryCode, Year)
+): 0 row(s) affected
+[32, 01:48:23] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[32, 01:48:23] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[33, 01:48:23] SHOW DATABASES: Executing 
+[33, 01:48:23] SHOW DATABASES: OK
+[34, 01:48:27] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[34, 01:48:27] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[35, 01:48:27] SHOW COLUMNS FROM `substance_abuse`.`countries`: Executing 
+[35, 01:48:27] SHOW COLUMNS FROM `substance_abuse`.`countries`: OK
+[36, 01:49:24] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[36, 01:49:24] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[37, 01:49:24] SHOW COLUMNS FROM `substance_abuse`.`substanceabusepercountry`: Executing 
+[37, 01:49:24] SHOW COLUMNS FROM `substance_abuse`.`substanceabusepercountry`: OK
+[38, 01:50:47] PREPARE stmt FROM 'INSERT INTO `substance_abuse`.`substanceabusepercountry` (`countryCode`,`Year`,`prevalenceAlcoholUseDisorder_Percent`,`prevalenceDrugUseDisorder_Percent`) VALUES(?,?,?,?)': Executing 
+[38, 01:50:47] PREPARE stmt FROM 'INSERT INTO `substance_abuse`.`substanceabusepercountry` (`countryCode`,`Year`,`prevalenceAlcoholUseDisorder_Percent`,`prevalenceDrugUseDisorder_Percent`) VALUES(?,?,?,?)': OK
+[39, 01:51:10] DEALLOCATE PREPARE stmt: Executing 
+[39, 01:51:10] DEALLOCATE PREPARE stmt: OK
+[40, 01:52:56] SELECT * FROM substance_abuse.substanceabusepercountry: Running...
+[40, 01:52:56] SELECT * FROM substance_abuse.substanceabusepercountry: Fetching...
+[40, 01:52:56] SELECT * FROM substance_abuse.substanceabusepercountry: 5100 row(s) returned
+[41, 02:25:40] DROP TABLE `substance_abuse`.`substanceabusepercountry`: Running...
+[41, 02:25:40] DROP TABLE `substance_abuse`.`substanceabusepercountry`: 0 row(s) affected
+[42, 02:25:45] CREATE TABLE substanceAbusePerCountry(
+	countryCode CHAR(5),
+    Year INTEGER,
+    prevalenceAlcoholUseDisorder_Percent DOUBLE,
+    prevalenceDrugUseDisorder_Percent DOUBLE,
+    FOREIGN KEY (countryCode) REFERENCES countries(countryCode),
+    PRIMARY KEY (countryCode, Year)
+): Running...
+[42, 02:25:45] CREATE TABLE substanceAbusePerCountry(
+	countryCode CHAR(5),
+    Year INTEGER,
+    prevalenceAlcoholUseDisorder_Percent DOUBLE,
+    prevalenceDrugUseDisorder_Percent DOUBLE,
+    FOREIGN KEY (countryCode) REFERENCES countries(countryCode),
+    PRIMARY KEY (countryCode, Year)
+): 0 row(s) affected
+[43, 02:26:09] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[43, 02:26:09] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[44, 02:26:09] SHOW DATABASES: Executing 
+[44, 02:26:09] SHOW DATABASES: OK
+[45, 02:26:17] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[45, 02:26:17] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[46, 02:26:18] SHOW COLUMNS FROM `substance_abuse`.`substanceabusepercountry`: Executing 
+[46, 02:26:18] SHOW COLUMNS FROM `substance_abuse`.`substanceabusepercountry`: OK
+[47, 02:26:29] PREPARE stmt FROM 'INSERT INTO `substance_abuse`.`substanceabusepercountry` (`countryCode`,`Year`,`prevalenceAlcoholUseDisorder_Percent`,`prevalenceDrugUseDisorder_Percent`) VALUES(?,?,?,?)': Executing 
+[47, 02:26:29] PREPARE stmt FROM 'INSERT INTO `substance_abuse`.`substanceabusepercountry` (`countryCode`,`Year`,`prevalenceAlcoholUseDisorder_Percent`,`prevalenceDrugUseDisorder_Percent`) VALUES(?,?,?,?)': OK
+[48, 02:26:48] DEALLOCATE PREPARE stmt: Executing 
+[48, 02:26:48] DEALLOCATE PREPARE stmt: OK
+[49, 02:26:59] SELECT * FROM substance_abuse.substanceabusepercountry: Running...
+[49, 02:26:59] SELECT * FROM substance_abuse.substanceabusepercountry: Fetching...
+[49, 02:26:59] SELECT * FROM substance_abuse.substanceabusepercountry: 5100 row(s) returned
+[1, 16:52:08] SELECT * FROM substance_abuse.countries
+LIMIT 0, 1000
+: Running...
+[1, 16:52:08] SELECT * FROM substance_abuse.countries
+LIMIT 0, 1000
+: Fetching...
+[1, 16:52:08] SELECT * FROM substance_abuse.countries
+LIMIT 0, 1000
+: 183 row(s) returned
+[2, 16:52:10] SELECT * FROM substance_abuse.substanceabusepercountry
+LIMIT 0, 1000
+: Running...
+[2, 16:52:10] SELECT * FROM substance_abuse.substanceabusepercountry
+LIMIT 0, 1000
+: Fetching...
+[2, 16:52:10] SELECT * FROM substance_abuse.substanceabusepercountry
+LIMIT 0, 1000
+: 1000 row(s) returned
+[3, 16:52:34] SELECT * FROM substance_abuse.countries: Running...
+[3, 16:52:34] SELECT * FROM substance_abuse.countries: Fetching...
+[3, 16:52:34] SELECT * FROM substance_abuse.countries: 183 row(s) returned
+[4, 16:52:35] SELECT * FROM substance_abuse.substanceabusepercountry: Running...
+[4, 16:52:35] SELECT * FROM substance_abuse.substanceabusepercountry: Fetching...
+[4, 16:52:35] SELECT * FROM substance_abuse.substanceabusepercountry: 5100 row(s) returned
+[1, 17:53:49] DROP TABLE `substance_abuse`.`substanceabusepercountry`: Running...
+[1, 17:53:49] DROP TABLE `substance_abuse`.`substanceabusepercountry`: 0 row(s) affected
+[2, 17:53:55] DROP TABLE `substance_abuse`.`countries`: Running...
+[2, 17:53:55] DROP TABLE `substance_abuse`.`countries`: 0 row(s) affected
+[1, 17:55:14] CREATE TABLE countries(
+countryCode CHAR(5),
+countryName CHAR(100),
+PRIMARY KEY (countryCode)
+): Running...
+[1, 17:55:14] CREATE TABLE countries(
+countryCode CHAR(5),
+countryName CHAR(100),
+PRIMARY KEY (countryCode)
+): 0 row(s) affected
+[2, 17:55:52] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[2, 17:55:52] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[3, 17:55:52] SHOW DATABASES: Executing 
+[3, 17:55:52] SHOW DATABASES: OK
+[4, 17:55:58] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[4, 17:55:58] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[5, 17:55:58] SHOW COLUMNS FROM `substance_abuse`.`countries`: Executing 
+[5, 17:55:58] SHOW COLUMNS FROM `substance_abuse`.`countries`: OK
+[6, 17:56:07] PREPARE stmt FROM 'INSERT INTO `substance_abuse`.`countries` (`countryName`,`countryCode`) VALUES(?,?)': Executing 
+[6, 17:56:07] PREPARE stmt FROM 'INSERT INTO `substance_abuse`.`countries` (`countryName`,`countryCode`) VALUES(?,?)': OK
+[7, 17:56:08] DEALLOCATE PREPARE stmt: Executing 
+[7, 17:56:08] DEALLOCATE PREPARE stmt: OK
+[8, 18:01:10] CREATE TABLE substanceAbusePerCountry(
+	countryCode CHAR(5),
+    Year INTEGER,
+    prevalenceAlcoholUseDisorder_Percent DOUBLE,
+    prevalenceDrugUseDisorder_Percent DOUBLE,
+    FOREIGN KEY (countryCode) REFERENCES countries(countryCode) ON DELETE CASCADE,
+    PRIMARY KEY (countryCode, Year)
+): Running...
+[8, 18:01:10] CREATE TABLE substanceAbusePerCountry(
+	countryCode CHAR(5),
+    Year INTEGER,
+    prevalenceAlcoholUseDisorder_Percent DOUBLE,
+    prevalenceDrugUseDisorder_Percent DOUBLE,
+    FOREIGN KEY (countryCode) REFERENCES countries(countryCode) ON DELETE CASCADE,
+    PRIMARY KEY (countryCode, Year)
+): 0 row(s) affected
+[9, 18:01:37] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[9, 18:01:37] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[10, 18:01:37] SHOW DATABASES: Executing 
+[10, 18:01:37] SHOW DATABASES: OK
+[11, 18:01:42] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': Executing 
+[11, 18:01:42] SHOW SESSION VARIABLES LIKE 'lower_case_table_names': OK
+[12, 18:01:42] SHOW COLUMNS FROM `substance_abuse`.`substanceabusepercountry`: Executing 
+[12, 18:01:42] SHOW COLUMNS FROM `substance_abuse`.`substanceabusepercountry`: OK
+[13, 18:01:55] PREPARE stmt FROM 'INSERT INTO `substance_abuse`.`substanceabusepercountry` (`countryCode`,`Year`,`prevalenceAlcoholUseDisorder_Percent`,`prevalenceDrugUseDisorder_Percent`) VALUES(?,?,?,?)': Executing 
+[13, 18:01:55] PREPARE stmt FROM 'INSERT INTO `substance_abuse`.`substanceabusepercountry` (`countryCode`,`Year`,`prevalenceAlcoholUseDisorder_Percent`,`prevalenceDrugUseDisorder_Percent`) VALUES(?,?,?,?)': OK
+[14, 18:02:17] DEALLOCATE PREPARE stmt: Executing 
+[14, 18:02:17] DEALLOCATE PREPARE stmt: OK
+[15, 18:02:50] SELECT * FROM substance_abuse.countries: Running...
+[15, 18:02:50] SELECT * FROM substance_abuse.countries: Fetching...
+[15, 18:02:50] SELECT * FROM substance_abuse.countries: 249 row(s) returned
+[16, 18:02:52] SELECT * FROM substance_abuse.substanceabusepercountry: Running...
+[16, 18:02:52] SELECT * FROM substance_abuse.substanceabusepercountry: Fetching...
+[16, 18:02:52] SELECT * FROM substance_abuse.substanceabusepercountry: 6120 row(s) returned
+[1, 20:51:15] CREATE VIEW countries_with_alcohol_higher_than_2 AS
+ SELECT countryCode, Year, prevalenceAlcoholUseDisorder_Percent
+ FROM substanceabusepercountry
+ WHERE prevalenceAlcoholUseDisorder_Percent >= 2: Running...
+[1, 20:51:15] CREATE VIEW countries_with_alcohol_higher_than_2 AS
+ SELECT countryCode, Year, prevalenceAlcoholUseDisorder_Percent
+ FROM substanceabusepercountry
+ WHERE prevalenceAlcoholUseDisorder_Percent >= 2: Error Code: 1050. Table 'countries_with_alcohol_higher_than_2' already exists
+[2, 20:51:31] SELECT * FROM substance_abuse.countries_with_alcohol_higher_than_2: Running...
+[2, 20:51:31] SELECT * FROM substance_abuse.countries_with_alcohol_higher_than_2: Fetching...
+[2, 20:51:31] SELECT * FROM substance_abuse.countries_with_alcohol_higher_than_2: 1943 row(s) returned
+[3, 20:53:11] SELECT * FROM substance_abuse.countries: Running...
+[3, 20:53:11] SELECT * FROM substance_abuse.countries: Fetching...
+[3, 20:53:11] SELECT * FROM substance_abuse.countries: 249 row(s) returned
+[4, 20:53:16] SELECT * FROM substance_abuse.substanceabusepercountry: Running...
+[4, 20:53:16] SELECT * FROM substance_abuse.substanceabusepercountry: Fetching...
+[4, 20:53:16] SELECT * FROM substance_abuse.substanceabusepercountry: 6120 row(s) returned
+[5, 20:55:20] CREATE VIEW countries_with_drug_higher_than_2 AS
+ SELECT countryCode, Year, prevalenceDrugUseDisorder_Percent
+ FROM substanceabusepercountry
+ WHERE prevalenceDrugUseDisorder_Percent >= prevalenceAlcoholUseDisorder_Percent: Running...
+[5, 20:55:20] CREATE VIEW countries_with_drug_higher_than_2 AS
+ SELECT countryCode, Year, prevalenceDrugUseDisorder_Percent
+ FROM substanceabusepercountry
+ WHERE prevalenceDrugUseDisorder_Percent >= prevalenceAlcoholUseDisorder_Percent: 0 row(s) affected
+[6, 20:56:01] CREATE TABLE countries(
+countryCode CHAR(5),
+countryName CHAR(100),
+PRIMARY KEY (countryCode)
+): Running...
+[6, 20:56:01] CREATE TABLE countries(
+countryCode CHAR(5),
+countryName CHAR(100),
+PRIMARY KEY (countryCode)
+): Error Code: 1050. Table 'countries' already exists
+[7, 20:56:07] CREATE VIEW countries_with_drug_higher_than_2 AS
+ SELECT countryCode, Year, prevalenceDrugUseDisorder_Percent
+ FROM substanceabusepercountry
+ WHERE prevalenceDrugUseDisorder_Percent >= prevalenceAlcoholUseDisorder_Percent: Running...
+[7, 20:56:07] CREATE VIEW countries_with_drug_higher_than_2 AS
+ SELECT countryCode, Year, prevalenceDrugUseDisorder_Percent
+ FROM substanceabusepercountry
+ WHERE prevalenceDrugUseDisorder_Percent >= prevalenceAlcoholUseDisorder_Percent: Error Code: 1050. Table 'countries_with_drug_higher_than_2' already exists
+[8, 20:57:20] SELECT * FROM substance_abuse.countries_with_drug_higher_than_2: Running...
+[8, 20:57:20] SELECT * FROM substance_abuse.countries_with_drug_higher_than_2: Fetching...
+[8, 20:57:20] SELECT * FROM substance_abuse.countries_with_drug_higher_than_2: 735 row(s) returned
+[9, 20:57:28] SELECT * FROM substance_abuse.countries_with_alcohol_higher_than_2: Running...
+[9, 20:57:28] SELECT * FROM substance_abuse.countries_with_alcohol_higher_than_2: Fetching...
+[9, 20:57:28] SELECT * FROM substance_abuse.countries_with_alcohol_higher_than_2: 1943 row(s) returned
+[10, 20:57:53] DROP VIEW `substance_abuse`.`countries_with_drug_higher_than_2`: Running...
+[10, 20:57:53] DROP VIEW `substance_abuse`.`countries_with_drug_higher_than_2`: 0 row(s) affected
+[11, 20:58:26] CREATE VIEW countries_with_drug_higher_than_alcohol AS
+ SELECT countryCode, Year, prevalenceAlcoholUseDisorder_Percent, prevalenceDrugUseDisorder_Percent
+ FROM substanceabusepercountry
+ WHERE prevalenceDrugUseDisorder_Percent >= prevalenceAlcoholUseDisorder_Percent: Running...
+[11, 20:58:26] CREATE VIEW countries_with_drug_higher_than_alcohol AS
+ SELECT countryCode, Year, prevalenceAlcoholUseDisorder_Percent, prevalenceDrugUseDisorder_Percent
+ FROM substanceabusepercountry
+ WHERE prevalenceDrugUseDisorder_Percent >= prevalenceAlcoholUseDisorder_Percent: 0 row(s) affected
+[12, 20:58:30] SELECT * FROM substance_abuse.countries_with_drug_higher_than_alcohol: Running...
+[12, 20:58:30] SELECT * FROM substance_abuse.countries_with_drug_higher_than_alcohol: Fetching...
+[12, 20:58:30] SELECT * FROM substance_abuse.countries_with_drug_higher_than_alcohol: 735 row(s) returned
+[13, 22:06:59] SELECT A.countryCode, A.prevalenceAlcoholUseDisorder_Percent, D.prevalenceAlcoholUseDisorder_Percent, D.prevalenceDrugUseDisorder_Percent
+FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+WHERE A.prevalenceAlcoholUseDisorder_Percent <= D.prevalenceAlcoholUseDisorder_Percent
+GROUP BY A.countryCode
+HAVING COUNT(DISTINCT A.countryCode): Running...
+[13, 22:06:59] SELECT A.countryCode, A.prevalenceAlcoholUseDisorder_Percent, D.prevalenceAlcoholUseDisorder_Percent, D.prevalenceDrugUseDisorder_Percent
+FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+WHERE A.prevalenceAlcoholUseDisorder_Percent <= D.prevalenceAlcoholUseDisorder_Percent
+GROUP BY A.countryCode
+HAVING COUNT(DISTINCT A.countryCode): Error Code: 1055. Expression #2 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'substance_abuse.A.prevalenceAlcoholUseDisorder_Percent' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+[14, 22:08:20] SELECT A.countryCode, D.prevalenceAlcoholUseDisorder_Percent, D.prevalenceDrugUseDisorder_Percent
+FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+WHERE A.prevalenceAlcoholUseDisorder_Percent <= D.prevalenceAlcoholUseDisorder_Percent
+GROUP BY A.countryCode
+HAVING COUNT(DISTINCT A.countryCode): Running...
+[14, 22:08:20] SELECT A.countryCode, D.prevalenceAlcoholUseDisorder_Percent, D.prevalenceDrugUseDisorder_Percent
+FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+WHERE A.prevalenceAlcoholUseDisorder_Percent <= D.prevalenceAlcoholUseDisorder_Percent
+GROUP BY A.countryCode
+HAVING COUNT(DISTINCT A.countryCode): Error Code: 1055. Expression #2 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'substance_abuse.D.prevalenceAlcoholUseDisorder_Percent' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+[15, 22:27:03] SELECT D.countryCode, D.Year, D.prevalenceAlcoholUseDisorder_Percent
+FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+WHERE A.prevalenceAlcoholUseDisorder_Percent <= D.prevalenceAlcoholUseDisorder_Percent
+GROUP BY A.countryCode
+HAVING 2000 < (SELECT COUNT(D.Year)
+				FROM countries_with_drug_higher_than_alcohol D
+                WHERE A.prevalenceAlcoholUseDisorder_Percent <= D.prevalenceAlcoholUseDisorder_Percent): Running...
+[15, 22:27:03] SELECT D.countryCode, D.Year, D.prevalenceAlcoholUseDisorder_Percent
+FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+WHERE A.prevalenceAlcoholUseDisorder_Percent <= D.prevalenceAlcoholUseDisorder_Percent
+GROUP BY A.countryCode
+HAVING 2000 < (SELECT COUNT(D.Year)
+				FROM countries_with_drug_higher_than_alcohol D
+                WHERE A.prevalenceAlcoholUseDisorder_Percent <= D.prevalenceAlcoholUseDisorder_Percent): Error Code: 1055. Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'substance_abuse.D.countryCode' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+[16, 22:30:00] SELECT D.countryCode, D.Year, D.prevalenceAlcoholUseDisorder_Percent
+FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+WHERE A.prevalenceAlcoholUseDisorder_Percent <= D.prevalenceAlcoholUseDisorder_Percent
+GROUP BY D.Year
+HAVING 2000 < (SELECT COUNT(D.Year)
+				FROM countries_with_drug_higher_than_alcohol D
+                WHERE A.prevalenceAlcoholUseDisorder_Percent <= D.prevalenceAlcoholUseDisorder_Percent): Running...
+[16, 22:30:00] SELECT D.countryCode, D.Year, D.prevalenceAlcoholUseDisorder_Percent
+FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+WHERE A.prevalenceAlcoholUseDisorder_Percent <= D.prevalenceAlcoholUseDisorder_Percent
+GROUP BY D.Year
+HAVING 2000 < (SELECT COUNT(D.Year)
+				FROM countries_with_drug_higher_than_alcohol D
+                WHERE A.prevalenceAlcoholUseDisorder_Percent <= D.prevalenceAlcoholUseDisorder_Percent): Error Code: 1055. Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'substance_abuse.D.countryCode' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+[17, 22:32:18] SELECT COUNT(D.Year) AS NumberOfYears
+FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+WHERE A.prevalenceAlcoholUseDisorder_Percent <= D.prevalenceAlcoholUseDisorder_Percent
+GROUP BY D.Year
+HAVING 2000 < (SELECT COUNT(D.Year)
+				FROM countries_with_drug_higher_than_alcohol D
+                WHERE A.prevalenceAlcoholUseDisorder_Percent <= D.prevalenceAlcoholUseDisorder_Percent): Running...
+[17, 22:32:19] SELECT COUNT(D.Year) AS NumberOfYears
+FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+WHERE A.prevalenceAlcoholUseDisorder_Percent <= D.prevalenceAlcoholUseDisorder_Percent
+GROUP BY D.Year
+HAVING 2000 < (SELECT COUNT(D.Year)
+				FROM countries_with_drug_higher_than_alcohol D
+                WHERE A.prevalenceAlcoholUseDisorder_Percent <= D.prevalenceAlcoholUseDisorder_Percent): Fetching...
+[17, 22:32:19] SELECT COUNT(D.Year) AS NumberOfYears
+FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+WHERE A.prevalenceAlcoholUseDisorder_Percent <= D.prevalenceAlcoholUseDisorder_Percent
+GROUP BY D.Year
+HAVING 2000 < (SELECT COUNT(D.Year)
+				FROM countries_with_drug_higher_than_alcohol D
+                WHERE A.prevalenceAlcoholUseDisorder_Percent <= D.prevalenceAlcoholUseDisorder_Percent): 0 row(s) returned
+[18, 22:33:02] SELECT COUNT(D.Year)
+FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+WHERE A.prevalenceAlcoholUseDisorder_Percent <= D.prevalenceAlcoholUseDisorder_Percent
+GROUP BY D.Year
+HAVING 2000 < (SELECT COUNT(D.Year)
+				FROM countries_with_drug_higher_than_alcohol D
+                WHERE A.prevalenceAlcoholUseDisorder_Percent <= D.prevalenceAlcoholUseDisorder_Percent): Running...
+[18, 22:33:02] SELECT COUNT(D.Year)
+FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+WHERE A.prevalenceAlcoholUseDisorder_Percent <= D.prevalenceAlcoholUseDisorder_Percent
+GROUP BY D.Year
+HAVING 2000 < (SELECT COUNT(D.Year)
+				FROM countries_with_drug_higher_than_alcohol D
+                WHERE A.prevalenceAlcoholUseDisorder_Percent <= D.prevalenceAlcoholUseDisorder_Percent): Fetching...
+[18, 22:33:02] SELECT COUNT(D.Year)
+FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+WHERE A.prevalenceAlcoholUseDisorder_Percent <= D.prevalenceAlcoholUseDisorder_Percent
+GROUP BY D.Year
+HAVING 2000 < (SELECT COUNT(D.Year)
+				FROM countries_with_drug_higher_than_alcohol D
+                WHERE A.prevalenceAlcoholUseDisorder_Percent <= D.prevalenceAlcoholUseDisorder_Percent): 0 row(s) returned
+[19, 22:34:16] SELECT D.countryCode, COUNT(D.Year)
+FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+WHERE A.prevalenceAlcoholUseDisorder_Percent <= D.prevalenceAlcoholUseDisorder_Percent
+GROUP BY D.Year
+HAVING 2000 < (SELECT COUNT(D.Year)
+				FROM countries_with_drug_higher_than_alcohol D
+                WHERE A.prevalenceAlcoholUseDisorder_Percent <= D.prevalenceAlcoholUseDisorder_Percent): Running...
+[19, 22:34:16] SELECT D.countryCode, COUNT(D.Year)
+FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+WHERE A.prevalenceAlcoholUseDisorder_Percent <= D.prevalenceAlcoholUseDisorder_Percent
+GROUP BY D.Year
+HAVING 2000 < (SELECT COUNT(D.Year)
+				FROM countries_with_drug_higher_than_alcohol D
+                WHERE A.prevalenceAlcoholUseDisorder_Percent <= D.prevalenceAlcoholUseDisorder_Percent): Error Code: 1055. Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'substance_abuse.D.countryCode' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+[20, 22:34:30] SELECT D.countryCode, COUNT(D.Year)
+FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+WHERE A.prevalenceAlcoholUseDisorder_Percent <= D.prevalenceAlcoholUseDisorder_Percent
+GROUP BY D.countryCode
+HAVING 2000 < (SELECT COUNT(D.Year)
+				FROM countries_with_drug_higher_than_alcohol D
+                WHERE A.prevalenceAlcoholUseDisorder_Percent <= D.prevalenceAlcoholUseDisorder_Percent): Running...
+[20, 22:34:30] SELECT D.countryCode, COUNT(D.Year)
+FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+WHERE A.prevalenceAlcoholUseDisorder_Percent <= D.prevalenceAlcoholUseDisorder_Percent
+GROUP BY D.countryCode
+HAVING 2000 < (SELECT COUNT(D.Year)
+				FROM countries_with_drug_higher_than_alcohol D
+                WHERE A.prevalenceAlcoholUseDisorder_Percent <= D.prevalenceAlcoholUseDisorder_Percent): Fetching...
+[20, 22:34:30] SELECT D.countryCode, COUNT(D.Year)
+FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+WHERE A.prevalenceAlcoholUseDisorder_Percent <= D.prevalenceAlcoholUseDisorder_Percent
+GROUP BY D.countryCode
+HAVING 2000 < (SELECT COUNT(D.Year)
+				FROM countries_with_drug_higher_than_alcohol D
+                WHERE A.prevalenceAlcoholUseDisorder_Percent <= D.prevalenceAlcoholUseDisorder_Percent): 0 row(s) returned
+[21, 22:34:44] SELECT D.countryCode, COUNT(D.Year)
+FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+WHERE A.prevalenceAlcoholUseDisorder_Percent <= D.prevalenceAlcoholUseDisorder_Percent
+GROUP BY D.countryCode: Running...
+[21, 22:34:44] SELECT D.countryCode, COUNT(D.Year)
+FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+WHERE A.prevalenceAlcoholUseDisorder_Percent <= D.prevalenceAlcoholUseDisorder_Percent
+GROUP BY D.countryCode: Fetching...
+[21, 22:34:44] SELECT D.countryCode, COUNT(D.Year)
+FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+WHERE A.prevalenceAlcoholUseDisorder_Percent <= D.prevalenceAlcoholUseDisorder_Percent
+GROUP BY D.countryCode: 3 row(s) returned
+[22, 22:35:25] SELECT * FROM substance_abuse.countries_with_drug_higher_than_alcohol: Running...
+[22, 22:35:25] SELECT * FROM substance_abuse.countries_with_drug_higher_than_alcohol: Fetching...
+[22, 22:35:25] SELECT * FROM substance_abuse.countries_with_drug_higher_than_alcohol: 735 row(s) returned
+[23, 22:36:21] SELECT D.countryCode, COUNT(D.Year)
+FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+WHERE A.prevalenceAlcoholUseDisorder_Percent <= D.prevalenceAlcoholUseDisorder_Percent
+GROUP BY D.countryCode: Running...
+[23, 22:36:21] SELECT D.countryCode, COUNT(D.Year)
+FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+WHERE A.prevalenceAlcoholUseDisorder_Percent <= D.prevalenceAlcoholUseDisorder_Percent
+GROUP BY D.countryCode: Fetching...
+[23, 22:36:21] SELECT D.countryCode, COUNT(D.Year)
+FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+WHERE A.prevalenceAlcoholUseDisorder_Percent <= D.prevalenceAlcoholUseDisorder_Percent
+GROUP BY D.countryCode: 3 row(s) returned
+[24, 22:41:28] SELECT D.countryCode, COUNT(D.Year)
+FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+WHERE A.prevalenceAlcoholUseDisorder_Percent <= D.prevalenceAlcoholUseDisorder_Percent
+GROUP BY D.countryCode, D.Year: Running...
+[24, 22:41:28] SELECT D.countryCode, COUNT(D.Year)
+FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+WHERE A.prevalenceAlcoholUseDisorder_Percent <= D.prevalenceAlcoholUseDisorder_Percent
+GROUP BY D.countryCode, D.Year: Fetching...
+[24, 22:41:28] SELECT D.countryCode, COUNT(D.Year)
+FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+WHERE A.prevalenceAlcoholUseDisorder_Percent <= D.prevalenceAlcoholUseDisorder_Percent
+GROUP BY D.countryCode, D.Year: 29 row(s) returned
+[25, 22:42:52] SELECT D.countryCode, COUNT(D.Year)
+FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+WHERE D.countryCode = A.countryCode
+GROUP BY D.countryCode, D.Year
+HAVING A.prevalenceAlcoholUseDisorder_Percent <= D.prevalenceAlcoholUseDisorder_Percent: Running...
+[25, 22:42:52] SELECT D.countryCode, COUNT(D.Year)
+FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+WHERE D.countryCode = A.countryCode
+GROUP BY D.countryCode, D.Year
+HAVING A.prevalenceAlcoholUseDisorder_Percent <= D.prevalenceAlcoholUseDisorder_Percent: Error Code: 1054. Unknown column 'A.prevalenceAlcoholUseDisorder_Percent' in 'having clause'
+[26, 22:44:45] SELECT D.countryCode, COUNT(D.Year)
+FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+WHERE D.countryCode = A.countryCode
+GROUP BY D.countryCode, D.Year
+HAVING ( SELECT COUNT(D.Year)
+		FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+		WHERE A.prevalenceAlcoholUseDisorder_Percent <= D.prevalenceAlcoholUseDisorder_Percent): Running...
+[26, 22:44:45] SELECT D.countryCode, COUNT(D.Year)
+FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+WHERE D.countryCode = A.countryCode
+GROUP BY D.countryCode, D.Year
+HAVING ( SELECT COUNT(D.Year)
+		FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+		WHERE A.prevalenceAlcoholUseDisorder_Percent <= D.prevalenceAlcoholUseDisorder_Percent): Fetching...
+[26, 22:44:45] SELECT D.countryCode, COUNT(D.Year)
+FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+WHERE D.countryCode = A.countryCode
+GROUP BY D.countryCode, D.Year
+HAVING ( SELECT COUNT(D.Year)
+		FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+		WHERE A.prevalenceAlcoholUseDisorder_Percent <= D.prevalenceAlcoholUseDisorder_Percent): 90 row(s) returned
+[27, 22:45:05] SELECT D.countryCode, COUNT(D.Year)
+FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+WHERE D.countryCode = A.countryCode
+GROUP BY D.countryCode
+HAVING ( SELECT COUNT(D.Year)
+		FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+		WHERE A.prevalenceAlcoholUseDisorder_Percent <= D.prevalenceAlcoholUseDisorder_Percent): Running...
+[27, 22:45:05] SELECT D.countryCode, COUNT(D.Year)
+FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+WHERE D.countryCode = A.countryCode
+GROUP BY D.countryCode
+HAVING ( SELECT COUNT(D.Year)
+		FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+		WHERE A.prevalenceAlcoholUseDisorder_Percent <= D.prevalenceAlcoholUseDisorder_Percent): Fetching...
+[27, 22:45:05] SELECT D.countryCode, COUNT(D.Year)
+FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+WHERE D.countryCode = A.countryCode
+GROUP BY D.countryCode
+HAVING ( SELECT COUNT(D.Year)
+		FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+		WHERE A.prevalenceAlcoholUseDisorder_Percent <= D.prevalenceAlcoholUseDisorder_Percent): 4 row(s) returned
+[28, 22:45:38] SELECT D.countryCode, COUNT(D.Year)
+FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+WHERE D.countryCode = A.countryCode
+GROUP BY D.countryCode, D.Year
+HAVING ( SELECT COUNT(D.Year)
+		FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+		WHERE A.prevalenceAlcoholUseDisorder_Percent <= D.prevalenceAlcoholUseDisorder_Percent): Running...
+[28, 22:45:38] SELECT D.countryCode, COUNT(D.Year)
+FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+WHERE D.countryCode = A.countryCode
+GROUP BY D.countryCode, D.Year
+HAVING ( SELECT COUNT(D.Year)
+		FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+		WHERE A.prevalenceAlcoholUseDisorder_Percent <= D.prevalenceAlcoholUseDisorder_Percent): Fetching...
+[28, 22:45:39] SELECT D.countryCode, COUNT(D.Year)
+FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+WHERE D.countryCode = A.countryCode
+GROUP BY D.countryCode, D.Year
+HAVING ( SELECT COUNT(D.Year)
+		FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+		WHERE A.prevalenceAlcoholUseDisorder_Percent <= D.prevalenceAlcoholUseDisorder_Percent): 90 row(s) returned
+[29, 22:46:39] SELECT COUNT(D.Year)
+FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+WHERE D.countryCode = A.countryCode
+GROUP BY D.countryCode, D.Year
+HAVING ( SELECT COUNT(D.Year)
+		FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+		WHERE A.prevalenceAlcoholUseDisorder_Percent <= D.prevalenceAlcoholUseDisorder_Percent): Running...
+[29, 22:46:39] SELECT COUNT(D.Year)
+FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+WHERE D.countryCode = A.countryCode
+GROUP BY D.countryCode, D.Year
+HAVING ( SELECT COUNT(D.Year)
+		FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+		WHERE A.prevalenceAlcoholUseDisorder_Percent <= D.prevalenceAlcoholUseDisorder_Percent): Fetching...
+[29, 22:46:39] SELECT COUNT(D.Year)
+FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+WHERE D.countryCode = A.countryCode
+GROUP BY D.countryCode, D.Year
+HAVING ( SELECT COUNT(D.Year)
+		FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+		WHERE A.prevalenceAlcoholUseDisorder_Percent <= D.prevalenceAlcoholUseDisorder_Percent): 90 row(s) returned
+[30, 22:46:52] SELECT COUNT(D.Year)
+FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+WHERE D.countryCode = A.countryCode
+GROUP BY D.countryCode
+HAVING ( SELECT COUNT(D.Year)
+		FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+		WHERE A.prevalenceAlcoholUseDisorder_Percent <= D.prevalenceAlcoholUseDisorder_Percent): Running...
+[30, 22:46:52] SELECT COUNT(D.Year)
+FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+WHERE D.countryCode = A.countryCode
+GROUP BY D.countryCode
+HAVING ( SELECT COUNT(D.Year)
+		FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+		WHERE A.prevalenceAlcoholUseDisorder_Percent <= D.prevalenceAlcoholUseDisorder_Percent): Fetching...
+[30, 22:46:52] SELECT COUNT(D.Year)
+FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+WHERE D.countryCode = A.countryCode
+GROUP BY D.countryCode
+HAVING ( SELECT COUNT(D.Year)
+		FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+		WHERE A.prevalenceAlcoholUseDisorder_Percent <= D.prevalenceAlcoholUseDisorder_Percent): 4 row(s) returned
+[31, 22:47:22] SELECT D. countryCode, COUNT(D.Year)
+FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+WHERE D.countryCode = A.countryCode
+GROUP BY D.Year
+HAVING ( SELECT COUNT(D.Year)
+		FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+		WHERE A.prevalenceAlcoholUseDisorder_Percent <= D.prevalenceAlcoholUseDisorder_Percent): Running...
+[31, 22:47:22] SELECT D. countryCode, COUNT(D.Year)
+FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+WHERE D.countryCode = A.countryCode
+GROUP BY D.Year
+HAVING ( SELECT COUNT(D.Year)
+		FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+		WHERE A.prevalenceAlcoholUseDisorder_Percent <= D.prevalenceAlcoholUseDisorder_Percent): Error Code: 1055. Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'substance_abuse.D.countryCode' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+[32, 22:47:39] SELECT D. countryCode, COUNT(D.Year)
+FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+WHERE D.countryCode = A.countryCode
+GROUP BY D. countryCode, D.Year
+HAVING ( SELECT COUNT(D.Year)
+		FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+		WHERE A.prevalenceAlcoholUseDisorder_Percent <= D.prevalenceAlcoholUseDisorder_Percent): Running...
+[32, 22:47:39] SELECT D. countryCode, COUNT(D.Year)
+FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+WHERE D.countryCode = A.countryCode
+GROUP BY D. countryCode, D.Year
+HAVING ( SELECT COUNT(D.Year)
+		FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+		WHERE A.prevalenceAlcoholUseDisorder_Percent <= D.prevalenceAlcoholUseDisorder_Percent): Fetching...
+[32, 22:47:39] SELECT D. countryCode, COUNT(D.Year)
+FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+WHERE D.countryCode = A.countryCode
+GROUP BY D. countryCode, D.Year
+HAVING ( SELECT COUNT(D.Year)
+		FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+		WHERE A.prevalenceAlcoholUseDisorder_Percent <= D.prevalenceAlcoholUseDisorder_Percent): 90 row(s) returned
+[33, 22:48:10] SELECT D. countryCode, COUNT(D.Year)
+FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+WHERE D.countryCode = A.countryCode
+GROUP BY D. countryCode, D.Year
+HAVING ( SELECT COUNT( DISTINCT D.Year)
+		FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+		WHERE A.prevalenceAlcoholUseDisorder_Percent <= D.prevalenceAlcoholUseDisorder_Percent): Running...
+[33, 22:48:10] SELECT D. countryCode, COUNT(D.Year)
+FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+WHERE D.countryCode = A.countryCode
+GROUP BY D. countryCode, D.Year
+HAVING ( SELECT COUNT( DISTINCT D.Year)
+		FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+		WHERE A.prevalenceAlcoholUseDisorder_Percent <= D.prevalenceAlcoholUseDisorder_Percent): Fetching...
+[33, 22:48:10] SELECT D. countryCode, COUNT(D.Year)
+FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+WHERE D.countryCode = A.countryCode
+GROUP BY D. countryCode, D.Year
+HAVING ( SELECT COUNT( DISTINCT D.Year)
+		FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+		WHERE A.prevalenceAlcoholUseDisorder_Percent <= D.prevalenceAlcoholUseDisorder_Percent): 90 row(s) returned
+[34, 22:48:26] SELECT D. countryCode, COUNT(DISTINCT D.Year)
+FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+WHERE D.countryCode = A.countryCode
+GROUP BY D. countryCode, D.Year
+HAVING ( SELECT COUNT( DISTINCT D.Year)
+		FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+		WHERE A.prevalenceAlcoholUseDisorder_Percent <= D.prevalenceAlcoholUseDisorder_Percent): Running...
+[34, 22:48:26] SELECT D. countryCode, COUNT(DISTINCT D.Year)
+FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+WHERE D.countryCode = A.countryCode
+GROUP BY D. countryCode, D.Year
+HAVING ( SELECT COUNT( DISTINCT D.Year)
+		FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+		WHERE A.prevalenceAlcoholUseDisorder_Percent <= D.prevalenceAlcoholUseDisorder_Percent): Fetching...
+[34, 22:48:26] SELECT D. countryCode, COUNT(DISTINCT D.Year)
+FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+WHERE D.countryCode = A.countryCode
+GROUP BY D. countryCode, D.Year
+HAVING ( SELECT COUNT( DISTINCT D.Year)
+		FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+		WHERE A.prevalenceAlcoholUseDisorder_Percent <= D.prevalenceAlcoholUseDisorder_Percent): 90 row(s) returned
+[35, 22:49:59] SELECT DISTINCT D.countryCode, COUNT(D.Year)
+FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+WHERE D.countryCode = A.countryCode
+GROUP BY D. countryCode, D.Year
+HAVING ( SELECT COUNT(D.Year)
+		FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+		WHERE A.prevalenceAlcoholUseDisorder_Percent <= D.prevalenceAlcoholUseDisorder_Percent): Running...
+[35, 22:49:59] SELECT DISTINCT D.countryCode, COUNT(D.Year)
+FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+WHERE D.countryCode = A.countryCode
+GROUP BY D. countryCode, D.Year
+HAVING ( SELECT COUNT(D.Year)
+		FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+		WHERE A.prevalenceAlcoholUseDisorder_Percent <= D.prevalenceAlcoholUseDisorder_Percent): Fetching...
+[35, 22:49:59] SELECT DISTINCT D.countryCode, COUNT(D.Year)
+FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+WHERE D.countryCode = A.countryCode
+GROUP BY D. countryCode, D.Year
+HAVING ( SELECT COUNT(D.Year)
+		FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+		WHERE A.prevalenceAlcoholUseDisorder_Percent <= D.prevalenceAlcoholUseDisorder_Percent): 4 row(s) returned
+[36, 22:50:29] SELECT DISTINCT D.countryCode, COUNT(D.Year)
+FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+WHERE D.countryCode = A.countryCode
+GROUP BY D. countryCode, D.Year
+HAVING ( SELECT COUNT(D.Year)
+		FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+		WHERE A.prevalenceAlcoholUseDisorder_Percent <= D.prevalenceAlcoholUseDisorder_Percent): Running...
+[36, 22:50:29] SELECT DISTINCT D.countryCode, COUNT(D.Year)
+FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+WHERE D.countryCode = A.countryCode
+GROUP BY D. countryCode, D.Year
+HAVING ( SELECT COUNT(D.Year)
+		FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+		WHERE A.prevalenceAlcoholUseDisorder_Percent <= D.prevalenceAlcoholUseDisorder_Percent): Fetching...
+[36, 22:50:29] SELECT DISTINCT D.countryCode, COUNT(D.Year)
+FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+WHERE D.countryCode = A.countryCode
+GROUP BY D. countryCode, D.Year
+HAVING ( SELECT COUNT(D.Year)
+		FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+		WHERE A.prevalenceAlcoholUseDisorder_Percent <= D.prevalenceAlcoholUseDisorder_Percent): 4 row(s) returned
+[37, 22:57:49] SELECT * FROM substance_abuse.countries_with_alcohol_higher_than_2: Running...
+[37, 22:57:49] SELECT * FROM substance_abuse.countries_with_alcohol_higher_than_2: Fetching...
+[37, 22:57:49] SELECT * FROM substance_abuse.countries_with_alcohol_higher_than_2: 1943 row(s) returned
+[38, 22:57:57] SELECT * FROM substance_abuse.countries_with_drug_higher_than_alcohol: Running...
+[38, 22:57:57] SELECT * FROM substance_abuse.countries_with_drug_higher_than_alcohol: Fetching...
+[38, 22:57:57] SELECT * FROM substance_abuse.countries_with_drug_higher_than_alcohol: 735 row(s) returned
+[39, 22:58:03] SELECT DISTINCT D.countryCode, COUNT(D.Year)
+FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+WHERE D.countryCode = A.countryCode
+GROUP BY D. countryCode, D.Year
+HAVING ( SELECT COUNT(D.Year)
+		FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+		WHERE A.prevalenceAlcoholUseDisorder_Percent <= D.prevalenceAlcoholUseDisorder_Percent): Running...
+[39, 22:58:03] SELECT DISTINCT D.countryCode, COUNT(D.Year)
+FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+WHERE D.countryCode = A.countryCode
+GROUP BY D. countryCode, D.Year
+HAVING ( SELECT COUNT(D.Year)
+		FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+		WHERE A.prevalenceAlcoholUseDisorder_Percent <= D.prevalenceAlcoholUseDisorder_Percent): Fetching...
+[39, 22:58:03] SELECT DISTINCT D.countryCode, COUNT(D.Year)
+FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+WHERE D.countryCode = A.countryCode
+GROUP BY D. countryCode, D.Year
+HAVING ( SELECT COUNT(D.Year)
+		FROM countries_with_alcohol_higher_than_2 A, countries_with_drug_higher_than_alcohol D
+		WHERE A.prevalenceAlcoholUseDisorder_Percent <= D.prevalenceAlcoholUseDisorder_Percent): 4 row(s) returned

@@ -1,0 +1,246 @@
+[7, 18:48:42] CREATE TABLE TotalCountryDeaths AS
+    SELECT 
+        countryCode, SUM(numberOfDeaths) AS totalDeaths
+    FROM
+        deaths
+    GROUP BY countryCode: Running...
+[7, 18:48:42] CREATE TABLE TotalCountryDeaths AS
+    SELECT 
+        countryCode, SUM(numberOfDeaths) AS totalDeaths
+    FROM
+        deaths
+    GROUP BY countryCode: 204 row(s) affected
+Records: 204  Duplicates: 0  Warnings: 0
+[8, 18:48:42] CREATE VIEW DeathByAlcoholDisorders AS
+    SELECT 
+        countryCode, cause,
+        SUM(numberOfDeaths) AS totalDeaths
+    FROM
+        deaths
+    WHERE
+        cause = 'Alcohol Use Disorders'
+    GROUP BY countryCode: Running...
+[8, 18:48:42] CREATE VIEW DeathByAlcoholDisorders AS
+    SELECT 
+        countryCode, cause,
+        SUM(numberOfDeaths) AS totalDeaths
+    FROM
+        deaths
+    WHERE
+        cause = 'Alcohol Use Disorders'
+    GROUP BY countryCode: 0 row(s) affected
+[9, 18:48:42] CREATE VIEW DeathByDrugs AS
+    SELECT 
+        countryCode, cause, SUM(numberOfDeaths) AS totalDeaths
+    FROM
+        deaths
+    WHERE
+        cause = 'Drug Use Disorders'
+    GROUP BY countryCode: Running...
+[9, 18:48:42] CREATE VIEW DeathByDrugs AS
+    SELECT 
+        countryCode, cause, SUM(numberOfDeaths) AS totalDeaths
+    FROM
+        deaths
+    WHERE
+        cause = 'Drug Use Disorders'
+    GROUP BY countryCode: 0 row(s) affected
+[10, 18:48:52] SELECT D.countryCode, D.Year, D.cause, D.numberOfDeaths FROM deaths D, deathbyalcoholdisorders A where D.cause != A.cause 
+INTERSECT
+SELECT D.countryCode, D.Year, D.cause, D.numberOfDeaths FROM deaths D, deathbydrugs S where D.cause = S.cause: Running...
+[10, 18:49:55] SELECT D.countryCode, D.Year, D.cause, D.numberOfDeaths FROM deaths D, deathbyalcoholdisorders A where D.cause != A.cause 
+INTERSECT
+SELECT D.countryCode, D.Year, D.cause, D.numberOfDeaths FROM deaths D, deathbydrugs S where D.cause = S.cause: Fetching...
+[10, 18:49:55] SELECT D.countryCode, D.Year, D.cause, D.numberOfDeaths FROM deaths D, deathbyalcoholdisorders A where D.cause != A.cause 
+INTERSECT
+SELECT D.countryCode, D.Year, D.cause, D.numberOfDeaths FROM deaths D, deathbydrugs S where D.cause = S.cause: 6120 row(s) returned
+[11, 18:52:27] SELECT DISTINCT
+    D.countryCode, D.Year, D.cause, D.numberOfDeaths
+FROM
+    deaths D
+        INNER JOIN
+    deathbydrugs S ON D.cause = S.cause: Running...
+[11, 18:52:28] SELECT DISTINCT
+    D.countryCode, D.Year, D.cause, D.numberOfDeaths
+FROM
+    deaths D
+        INNER JOIN
+    deathbydrugs S ON D.cause = S.cause: Fetching...
+[11, 18:52:28] SELECT DISTINCT
+    D.countryCode, D.Year, D.cause, D.numberOfDeaths
+FROM
+    deaths D
+        INNER JOIN
+    deathbydrugs S ON D.cause = S.cause: 6120 row(s) returned
+[12, 18:52:38] SELECT 
+    *
+FROM
+    deaths D
+WHERE
+    cause IN (SELECT 
+            cause
+        FROM
+            deathbyalcoholdisorders A
+        WHERE
+            D.cause = A.cause): Running...
+[12, 18:52:38] SELECT 
+    *
+FROM
+    deaths D
+WHERE
+    cause IN (SELECT 
+            cause
+        FROM
+            deathbyalcoholdisorders A
+        WHERE
+            D.cause = A.cause): Fetching...
+[12, 18:52:38] SELECT 
+    *
+FROM
+    deaths D
+WHERE
+    cause IN (SELECT 
+            cause
+        FROM
+            deathbyalcoholdisorders A
+        WHERE
+            D.cause = A.cause): 6120 row(s) returned
+[13, 18:52:43] SELECT 
+    *
+FROM
+    deaths D
+WHERE
+    EXISTS( SELECT 
+            *
+        FROM
+            deathbyalcoholdisorders A
+        WHERE
+            D.cause = A.cause): Running...
+[13, 18:52:43] SELECT 
+    *
+FROM
+    deaths D
+WHERE
+    EXISTS( SELECT 
+            *
+        FROM
+            deathbyalcoholdisorders A
+        WHERE
+            D.cause = A.cause): Fetching...
+[13, 18:52:43] SELECT 
+    *
+FROM
+    deaths D
+WHERE
+    EXISTS( SELECT 
+            *
+        FROM
+            deathbyalcoholdisorders A
+        WHERE
+            D.cause = A.cause): 6120 row(s) returned
+[14, 18:53:01] CREATE VIEW DeathBySubstances AS
+    SELECT 
+        D.cause,
+        SUM(S.totalDeaths + A.totalDeaths) AS DeathBySubstances
+    FROM
+        deaths D,
+        DeathByAlcoholDisorders A,
+        DeathByDrugs S
+            INNER JOIN
+        DeathByAlcoholDisorders Alcohol ON Alcohol.countryCode = S.countryCode
+    GROUP BY D.cause
+    HAVING deathbysubstances > 0: Running...
+[14, 18:53:01] CREATE VIEW DeathBySubstances AS
+    SELECT 
+        D.cause,
+        SUM(S.totalDeaths + A.totalDeaths) AS DeathBySubstances
+    FROM
+        deaths D,
+        DeathByAlcoholDisorders A,
+        DeathByDrugs S
+            INNER JOIN
+        DeathByAlcoholDisorders Alcohol ON Alcohol.countryCode = S.countryCode
+    GROUP BY D.cause
+    HAVING deathbysubstances > 0: Error Code: 1050. Table 'DeathBySubstances' already exists
+[15, 18:53:07] DROP VIEW `cs306project`.`deathbysubstances`: Running...
+[15, 18:53:07] DROP VIEW `cs306project`.`deathbysubstances`: 0 row(s) affected
+[16, 18:53:09] CREATE VIEW DeathBySubstances AS
+    SELECT 
+        D.cause,
+        SUM(S.totalDeaths + A.totalDeaths) AS DeathBySubstances
+    FROM
+        deaths D,
+        DeathByAlcoholDisorders A,
+        DeathByDrugs S
+            INNER JOIN
+        DeathByAlcoholDisorders Alcohol ON Alcohol.countryCode = S.countryCode
+    GROUP BY D.cause
+    HAVING deathbysubstances > 0: Running...
+[16, 18:53:09] CREATE VIEW DeathBySubstances AS
+    SELECT 
+        D.cause,
+        SUM(S.totalDeaths + A.totalDeaths) AS DeathBySubstances
+    FROM
+        deaths D,
+        DeathByAlcoholDisorders A,
+        DeathByDrugs S
+            INNER JOIN
+        DeathByAlcoholDisorders Alcohol ON Alcohol.countryCode = S.countryCode
+    GROUP BY D.cause
+    HAVING deathbysubstances > 0: 0 row(s) affected
+[17, 18:53:16] SELECT * FROM cs306project.deathbysubstances: Running...
+[18, 19:39:28] INTERRUPT: Running...
+[18, 19:39:28] INTERRUPT: OK - Query cancelled
+[17, 19:39:28] SELECT * FROM cs306project.deathbysubstances: Fetching...
+[17, 19:39:28] SELECT * FROM cs306project.deathbysubstances: Error Code: 1317. Query execution was interrupted
+[19, 19:40:05] select min(totalDeaths) from totalcountrydeaths: Running...
+[19, 19:40:05] select min(totalDeaths) from totalcountrydeaths: Fetching...
+[19, 19:40:05] select min(totalDeaths) from totalcountrydeaths: 1 row(s) returned
+[20, 19:40:12] select max(totalDeaths) from totalcountrydeaths: Running...
+[20, 19:40:12] select max(totalDeaths) from totalcountrydeaths: Fetching...
+[20, 19:40:12] select max(totalDeaths) from totalcountrydeaths: 1 row(s) returned
+[21, 19:40:18] ALter table totalcountrydeaths ADD constraint totalDeaths check( totalDeaths >= 299 AND totalDeaths <= 252783134): Running...
+[21, 19:40:18] ALter table totalcountrydeaths ADD constraint totalDeaths check( totalDeaths >= 299 AND totalDeaths <= 252783134): 204 row(s) affected
+Records: 204  Duplicates: 0  Warnings: 0
+[22, 19:40:23] insert into totalcountrydeaths(countryCode, totalDeaths) values('CCK', 252783135): Running...
+[22, 19:40:23] insert into totalcountrydeaths(countryCode, totalDeaths) values('CCK', 252783135): Error Code: 3819. Check constraint 'totalDeaths' is violated.
+[23, 19:40:27] create trigger beforeUpdate before update on totalcountrydeaths
+for each row 
+begin
+ if NEW.totalDeaths < 299 then set New.totalDeaths = 299;
+ elseif NEW.totalDeaths > 252783134 then set New.totalDeaths = 252783134; end if; end: Running...
+[23, 19:40:27] create trigger beforeUpdate before update on totalcountrydeaths
+for each row 
+begin
+ if NEW.totalDeaths < 299 then set New.totalDeaths = 299;
+ elseif NEW.totalDeaths > 252783134 then set New.totalDeaths = 252783134; end if; end: 0 row(s) affected
+[24, 19:40:34] create trigger beforeInsert before insert on totalcountrydeaths
+for each row 
+begin
+ if NEW.totalDeaths < 299 then set New.totalDeaths = 299;
+ elseif NEW.totalDeaths > 252783134 then set New.totalDeaths = 252783134; end if; end: Running...
+[24, 19:40:34] create trigger beforeInsert before insert on totalcountrydeaths
+for each row 
+begin
+ if NEW.totalDeaths < 299 then set New.totalDeaths = 299;
+ elseif NEW.totalDeaths > 252783134 then set New.totalDeaths = 252783134; end if; end: 0 row(s) affected
+[25, 19:40:39] insert into totalcountrydeaths(countryCode, totalDeaths) values('CCK', 252783135): Running...
+[25, 19:40:39] insert into totalcountrydeaths(countryCode, totalDeaths) values('CCK', 252783135): 1 row(s) affected
+[26, 19:40:46] CREATE PROCEDURE showCountryDeaths(in ISOCode char(5), Out countryDeaths int)  
+BEGIN  
+    SELECT totalDeaths INTO countryDeaths FROM totalcountrydeaths WHERE countryCode = ISOCode;   
+END: Running...
+[26, 19:40:46] CREATE PROCEDURE showCountryDeaths(in ISOCode char(5), Out countryDeaths int)  
+BEGIN  
+    SELECT totalDeaths INTO countryDeaths FROM totalcountrydeaths WHERE countryCode = ISOCode;   
+END: 0 row(s) affected
+[27, 19:40:51] call showCountryDeaths('AFG', @countryDeaths): Running...
+[27, 19:40:51] call showCountryDeaths('AFG', @countryDeaths): 1 row(s) affected
+[28, 19:40:51] select @countryDeaths: Running...
+[28, 19:40:51] select @countryDeaths: Fetching...
+[28, 19:40:51] select @countryDeaths: 1 row(s) returned
+[29, 19:40:56] call showCountryDeaths('USA', @countryDeaths): Running...
+[29, 19:40:56] call showCountryDeaths('USA', @countryDeaths): 1 row(s) affected
+[30, 19:40:56] select @countryDeaths: Running...
+[30, 19:40:56] select @countryDeaths: Fetching...
+[30, 19:40:56] select @countryDeaths: 1 row(s) returned

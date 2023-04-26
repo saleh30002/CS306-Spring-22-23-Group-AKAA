@@ -1,0 +1,282 @@
+[1, 22:47:40] (SELECT 
+    M.year, M.countryCode
+FROM
+    cs306project.meatmanagementpercountry M
+        JOIN
+    (SELECT 
+        AVG(production_1000_tonnes) AS Avgprod, year
+    FROM
+        cs306project.meatmanagementpercountry M
+    GROUP BY year) b ON M.year = b.year
+WHERE
+    M.production_1000_tonnes > b.Avgprod)
+    
+EXCEPT
+
+# years with the countries that were above average production of vegetables in them
+(SELECT 
+    V.year, V.countryCode
+FROM
+    cs306project.vegetablesmanagementpercountry V
+        JOIN
+    (SELECT 
+        AVG(production_1000_tonnes) AS Avgprod, year
+    FROM
+        cs306project.vegetablesmanagementpercountry V
+    GROUP BY year) b ON V.year = b.year
+WHERE
+    V.production_1000_tonnes > b.Avgprod): Running...
+[1, 22:47:41] (SELECT 
+    M.year, M.countryCode
+FROM
+    cs306project.meatmanagementpercountry M
+        JOIN
+    (SELECT 
+        AVG(production_1000_tonnes) AS Avgprod, year
+    FROM
+        cs306project.meatmanagementpercountry M
+    GROUP BY year) b ON M.year = b.year
+WHERE
+    M.production_1000_tonnes > b.Avgprod)
+    
+EXCEPT
+
+# years with the countries that were above average production of vegetables in them
+(SELECT 
+    V.year, V.countryCode
+FROM
+    cs306project.vegetablesmanagementpercountry V
+        JOIN
+    (SELECT 
+        AVG(production_1000_tonnes) AS Avgprod, year
+    FROM
+        cs306project.vegetablesmanagementpercountry V
+    GROUP BY year) b ON V.year = b.year
+WHERE
+    V.production_1000_tonnes > b.Avgprod): Fetching...
+[1, 22:47:41] (SELECT 
+    M.year, M.countryCode
+FROM
+    cs306project.meatmanagementpercountry M
+        JOIN
+    (SELECT 
+        AVG(production_1000_tonnes) AS Avgprod, year
+    FROM
+        cs306project.meatmanagementpercountry M
+    GROUP BY year) b ON M.year = b.year
+WHERE
+    M.production_1000_tonnes > b.Avgprod)
+    
+EXCEPT
+
+# years with the countries that were above average production of vegetables in them
+(SELECT 
+    V.year, V.countryCode
+FROM
+    cs306project.vegetablesmanagementpercountry V
+        JOIN
+    (SELECT 
+        AVG(production_1000_tonnes) AS Avgprod, year
+    FROM
+        cs306project.vegetablesmanagementpercountry V
+    GROUP BY year) b ON V.year = b.year
+WHERE
+    V.production_1000_tonnes > b.Avgprod): 304 row(s) returned
+[2, 22:47:52] SELECT A.year, A.countryCode
+FROM 
+(SELECT 
+    M.year, M.countryCode
+FROM
+    cs306project.meatmanagementpercountry M
+        JOIN
+    (SELECT 
+        AVG(production_1000_tonnes) AS Avgprod, year
+    FROM
+        cs306project.meatmanagementpercountry M
+    GROUP BY year) b ON M.year = b.year
+WHERE
+    M.production_1000_tonnes > b.Avgprod) A
+LEFT JOIN 
+(SELECT 
+    V.year, V.countryCode
+FROM
+    cs306project.vegetablesmanagementpercountry V
+        JOIN
+    (SELECT 
+        AVG(production_1000_tonnes) AS Avgprod, year
+    FROM
+        cs306project.vegetablesmanagementpercountry V
+    GROUP BY year) b ON V.year = b.year
+WHERE
+    V.production_1000_tonnes > b.Avgprod) B
+    
+ON A.year = B.year AND A.countryCode = B.countryCode 
+WHERE B.countryCode IS NULL: Running...
+[2, 22:47:52] SELECT A.year, A.countryCode
+FROM 
+(SELECT 
+    M.year, M.countryCode
+FROM
+    cs306project.meatmanagementpercountry M
+        JOIN
+    (SELECT 
+        AVG(production_1000_tonnes) AS Avgprod, year
+    FROM
+        cs306project.meatmanagementpercountry M
+    GROUP BY year) b ON M.year = b.year
+WHERE
+    M.production_1000_tonnes > b.Avgprod) A
+LEFT JOIN 
+(SELECT 
+    V.year, V.countryCode
+FROM
+    cs306project.vegetablesmanagementpercountry V
+        JOIN
+    (SELECT 
+        AVG(production_1000_tonnes) AS Avgprod, year
+    FROM
+        cs306project.vegetablesmanagementpercountry V
+    GROUP BY year) b ON V.year = b.year
+WHERE
+    V.production_1000_tonnes > b.Avgprod) B
+    
+ON A.year = B.year AND A.countryCode = B.countryCode 
+WHERE B.countryCode IS NULL: Fetching...
+[2, 22:47:52] SELECT A.year, A.countryCode
+FROM 
+(SELECT 
+    M.year, M.countryCode
+FROM
+    cs306project.meatmanagementpercountry M
+        JOIN
+    (SELECT 
+        AVG(production_1000_tonnes) AS Avgprod, year
+    FROM
+        cs306project.meatmanagementpercountry M
+    GROUP BY year) b ON M.year = b.year
+WHERE
+    M.production_1000_tonnes > b.Avgprod) A
+LEFT JOIN 
+(SELECT 
+    V.year, V.countryCode
+FROM
+    cs306project.vegetablesmanagementpercountry V
+        JOIN
+    (SELECT 
+        AVG(production_1000_tonnes) AS Avgprod, year
+    FROM
+        cs306project.vegetablesmanagementpercountry V
+    GROUP BY year) b ON V.year = b.year
+WHERE
+    V.production_1000_tonnes > b.Avgprod) B
+    
+ON A.year = B.year AND A.countryCode = B.countryCode 
+WHERE B.countryCode IS NULL: 304 row(s) returned
+[3, 22:48:17] SELECT 
+    M.year, M.countryCode
+FROM
+    meatmanagementpercountry M
+WHERE
+    M.year = 2000
+        AND M.production_1000_tonnes IN (SELECT 
+            M2.production_1000_tonnes
+        FROM
+            meatmanagementpercountry M2
+        WHERE
+            M2.year = 2000
+                AND M.production_1000_tonnes > (SELECT 
+                    AVG(M2.production_1000_tonnes)
+                FROM
+                    meatmanagementpercountry M2
+                WHERE
+                    M2.year = 2000)): Running...
+[3, 22:48:17] SELECT 
+    M.year, M.countryCode
+FROM
+    meatmanagementpercountry M
+WHERE
+    M.year = 2000
+        AND M.production_1000_tonnes IN (SELECT 
+            M2.production_1000_tonnes
+        FROM
+            meatmanagementpercountry M2
+        WHERE
+            M2.year = 2000
+                AND M.production_1000_tonnes > (SELECT 
+                    AVG(M2.production_1000_tonnes)
+                FROM
+                    meatmanagementpercountry M2
+                WHERE
+                    M2.year = 2000)): Fetching...
+[3, 22:48:17] SELECT 
+    M.year, M.countryCode
+FROM
+    meatmanagementpercountry M
+WHERE
+    M.year = 2000
+        AND M.production_1000_tonnes IN (SELECT 
+            M2.production_1000_tonnes
+        FROM
+            meatmanagementpercountry M2
+        WHERE
+            M2.year = 2000
+                AND M.production_1000_tonnes > (SELECT 
+                    AVG(M2.production_1000_tonnes)
+                FROM
+                    meatmanagementpercountry M2
+                WHERE
+                    M2.year = 2000)): 32 row(s) returned
+[4, 22:48:23] SELECT 
+    M.year, M.countryCode
+FROM
+    meatmanagementpercountry M
+WHERE
+    EXISTS( SELECT 
+            M2.production_1000_tonnes
+        FROM
+            meatmanagementpercountry M2
+        WHERE
+            M2.year = 2000 AND M.year = 2000
+                AND M.production_1000_tonnes = M2.production_1000_tonnes
+                AND M.production_1000_tonnes > (SELECT 
+                    AVG(M3.production_1000_tonnes)
+                FROM
+                    meatmanagementpercountry M3
+                WHERE
+                    M3.year = 2000)): Running...
+[4, 22:48:23] SELECT 
+    M.year, M.countryCode
+FROM
+    meatmanagementpercountry M
+WHERE
+    EXISTS( SELECT 
+            M2.production_1000_tonnes
+        FROM
+            meatmanagementpercountry M2
+        WHERE
+            M2.year = 2000 AND M.year = 2000
+                AND M.production_1000_tonnes = M2.production_1000_tonnes
+                AND M.production_1000_tonnes > (SELECT 
+                    AVG(M3.production_1000_tonnes)
+                FROM
+                    meatmanagementpercountry M3
+                WHERE
+                    M3.year = 2000)): Fetching...
+[4, 22:48:23] SELECT 
+    M.year, M.countryCode
+FROM
+    meatmanagementpercountry M
+WHERE
+    EXISTS( SELECT 
+            M2.production_1000_tonnes
+        FROM
+            meatmanagementpercountry M2
+        WHERE
+            M2.year = 2000 AND M.year = 2000
+                AND M.production_1000_tonnes = M2.production_1000_tonnes
+                AND M.production_1000_tonnes > (SELECT 
+                    AVG(M3.production_1000_tonnes)
+                FROM
+                    meatmanagementpercountry M3
+                WHERE
+                    M3.year = 2000)): 32 row(s) returned
